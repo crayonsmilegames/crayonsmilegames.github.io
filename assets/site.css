@@ -124,8 +124,7 @@ main {
 .hero-mark img {
   width: min(440px, 100%);
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 24px 60px rgba(65, 50, 25, 0.14);
+  filter: drop-shadow(0 22px 32px rgba(65, 50, 25, 0.14));
 }
 
 .actions {
