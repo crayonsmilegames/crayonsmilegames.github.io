@@ -62,6 +62,23 @@ nav a {
   text-decoration: none;
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.lang-switch strong {
+  color: var(--ink);
+}
+
+.lang-switch a {
+  color: #176a77;
+}
+
 main {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
