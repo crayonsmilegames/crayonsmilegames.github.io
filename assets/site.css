@@ -171,6 +171,17 @@ main {
   font-size: clamp(26px, 3vw, 40px);
 }
 
+.status-note {
+  display: inline-flex;
+  margin: 8px 0 4px;
+  padding: 7px 12px;
+  border: 1px solid #c9e2d4;
+  border-radius: 8px;
+  background: #eef8f1;
+  color: #216546;
+  font-weight: 800;
+}
+
 .facts {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
