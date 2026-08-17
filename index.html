@@ -3,79 +3,775 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CrayonSmile</title>
-  <meta name="description" content="CrayonSmile은 아이와 가족을 위한 조용하고 따뜻한 학습 게임을 만듭니다.">
-  <meta property="og:title" content="CrayonSmile">
-  <meta property="og:description" content="아이와 가족을 위한 조용하고 따뜻한 학습 게임.">
+  <title>소미 키즈월드 — 한글·동화책·색칠·퍼즐 첫 학습 놀이터 | CrayonSmile</title>
+  <meta name="description" content="한글·그림책·색칠·퍼즐로 배우고 즐기는 우리 아이 첫 학습 놀이터. 소미 키즈월드를 Google Play에서 무료로 다운로드하세요.">
+  <meta property="og:title" content="소미 키즈월드 — 첫 학습 놀이터">
+  <meta property="og:description" content="한글도, 그림도, 이야기도. 아이의 '한 번 더!'가 배움으로 이어지는 따뜻한 첫 학습 놀이터.">
+  <meta property="og:image" content="assets/feature_graphic.png">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crayonsmilegames.github.io/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="소미 키즈월드 — 첫 학습 놀이터">
+  <meta name="twitter:description" content="한글·그림책·색칠·퍼즐로 배우고 즐기는 우리 아이 첫 학습 놀이터.">
+  <meta name="twitter:image" content="assets/feature_graphic.png">
   <link rel="alternate" hreflang="ko" href="https://crayonsmilegames.github.io/">
   <link rel="alternate" hreflang="en" href="https://crayonsmilegames.github.io/en/">
+  <link rel="icon" type="image/png" href="assets/app_icon.png">
+  <link rel="apple-touch-icon" href="assets/app_icon.png">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="./" aria-label="CrayonSmile home">
-      <img src="assets/crayonsmile-logo-transparent.png" alt="CrayonSmile logo">
-    </a>
-    <nav aria-label="주요 메뉴">
-      <a href="#apps">앱 소개</a>
-      <a href="#contact">문의</a>
-      <a href="privacy/">개인정보처리방침</a>
-      <span class="lang-switch" aria-label="언어 선택">
-        <strong>한국어</strong>
-        <a href="en/" lang="en">English</a>
-      </span>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">아이와 가족을 위한 학습 게임</p>
-        <h1>CrayonSmile</h1>
-        <p class="lead">CrayonSmile은 어린이와 가족이 편안하게 즐길 수 있는 따뜻한 학습 게임과 이야기 경험을 만드는 작은 개발 스튜디오입니다.</p>
-        <div class="actions">
-          <a class="button primary" href="privacy/">개인정보처리방침</a>
-          <a class="button" href="#contact">문의하기</a>
+<!-- ===== TOP NAV ===== -->
+<nav class="top-nav" id="top-nav" role="navigation" aria-label="메인 내비게이션">
+  <a class="nav-brand" href="./" aria-label="소미 키즈월드 홈">
+    <img src="assets/app_icon.png" alt="소미 키즈월드 아이콘">
+    <span class="nav-brand-name">소미 키즈월드</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#features">놀이 소개</a></li>
+    <li><a href="#screenshots">스크린샷</a></li>
+    <li><a href="#storybooks">동화책 시리즈</a></li>
+    <li><a href="#about">소개</a></li>
+    <li><a href="privacy/">개인정보</a></li>
+    <li><a href="en/" lang="en">English</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a id="nav-gplay-btn"
+       href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+       target="_blank" rel="noopener noreferrer"
+       class="btn btn-google-play"
+       aria-label="Google Play에서 소미 키즈월드 다운로드">
+      <svg class="gp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3.18 1.05C2.75 1.28 2.5 1.73 2.5 2.28v19.44c0 .55.25 1 .68 1.23l.12.07L13.44 12v-.27L3.3.98l-.12.07z" fill="#EA4335"/>
+        <path d="M17.09 15.79l-3.65-3.65v-.27l3.65-3.65.08.05 4.33 2.46c1.24.7 1.24 1.86 0 2.56l-4.33 2.46-.08.04z" fill="#FBBC04"/>
+        <path d="M17.17 15.75L13.44 12 3.18 22.95c.41.44 1.07.49 1.81.07l12.18-7.27z" fill="#34A853"/>
+        <path d="M17.17 8.25L4.99 1c-.74-.43-1.4-.38-1.81.07L13.44 12l3.73-3.75z" fill="#4285F4"/>
+      </svg>
+      <span class="gp-label">
+        <span class="gp-sub">Google Play</span>
+        <span class="gp-main">무료 다운로드</span>
+      </span>
+    </a>
+  </div>
+</nav>
+
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home" aria-label="소미 키즈월드 소개">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <span class="hero-blob hero-blob-1" aria-hidden="true"></span>
+  <span class="hero-blob hero-blob-2" aria-hidden="true"></span>
+  <span class="hero-blob hero-blob-3" aria-hidden="true"></span>
+
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Copy -->
+      <div class="hero-content">
+        <div class="hero-badge" role="text">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          Google Play 출시 준비 중
+        </div>
+        <h1 class="hero-title">소미 키즈월드</h1>
+        <span class="hero-title-sub">한글·동화책·색칠·퍼즐 첫 학습 놀이터</span>
+        <p class="hero-desc">
+          한글도, 그림도, 이야기도.<br>
+          아이의 <strong>"한 번 더!"</strong>가 배움으로 이어지는<br>
+          따뜻한 첫 학습 놀이터, 소미 키즈월드입니다.
+        </p>
+
+        <div class="hero-actions">
+          <a id="hero-gplay-btn"
+             href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-primary btn-xl"
+             aria-label="Google Play에서 소미 키즈월드 무료 다운로드">
+            <svg class="gp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M3.18 1.05C2.75 1.28 2.5 1.73 2.5 2.28v19.44c0 .55.25 1 .68 1.23l.12.07L13.44 12v-.27L3.3.98l-.12.07z" fill="rgba(255,255,255,0.9)"/>
+              <path d="M17.09 15.79l-3.65-3.65v-.27l3.65-3.65.08.05 4.33 2.46c1.24.7 1.24 1.86 0 2.56l-4.33 2.46-.08.04z" fill="rgba(255,255,255,0.9)"/>
+              <path d="M17.17 15.75L13.44 12 3.18 22.95c.41.44 1.07.49 1.81.07l12.18-7.27z" fill="rgba(255,255,255,0.9)"/>
+              <path d="M17.17 8.25L4.99 1c-.74-.43-1.4-.38-1.81.07L13.44 12l3.73-3.75z" fill="rgba(255,255,255,0.9)"/>
+            </svg>
+            Google Play 무료 다운로드
+          </a>
+          <a href="#features" class="btn btn-outline">놀이 소개 보기</a>
+        </div>
+
+        <div class="hero-trust" aria-label="앱 특징">
+          <span class="trust-chip"><span class="trust-chip-icon" aria-hidden="true">🆓</span> 기본 앱 무료</span>
+          <span class="trust-chip"><span class="trust-chip-icon" aria-hidden="true">🚫</span> 광고 없음</span>
+          <span class="trust-chip"><span class="trust-chip-icon" aria-hidden="true">🔒</span> 계정 불필요</span>
+          <span class="trust-chip"><span class="trust-chip-icon" aria-hidden="true">📱</span> Android 태블릿 최적화</span>
         </div>
       </div>
-      <div class="hero-mark" aria-hidden="true">
-        <img src="assets/crayonsmile-logo-transparent.png" alt="">
+
+      <!-- Visual -->
+      <div class="hero-visual">
+        <div class="hero-device">
+          <div class="hero-screen-wrap">
+            <img src="assets/screenshots/MainMenu.png"
+                 alt="소미 키즈월드 메인 메뉴 화면"
+                 loading="eager"
+                 width="960" height="540">
+          </div>
+          <div class="hero-floating-badge hero-floating-badge-1" aria-hidden="true">
+            <span class="hfb-icon">📚</span>
+            <div class="hfb-text">
+              <span class="hfb-title">동화책 시리즈</span>
+              <span class="hfb-sub">10종 · 100권 이상</span>
+            </div>
+          </div>
+          <div class="hero-floating-badge hero-floating-badge-2" aria-hidden="true">
+            <span class="hfb-icon">🎨</span>
+            <div class="hfb-text">
+              <span class="hfb-title">색칠 & 퍼즐</span>
+              <span class="hfb-sub">다양한 도안 제공</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="apps" class="section">
-      <p class="eyebrow">현재 프로젝트</p>
-      <h2>소미 키즈월드</h2>
-      <p><strong>Somi Kids World</strong>는 어린이와 가족을 위한 Android 태블릿용 학습 게임입니다. 한글놀이, 색칠놀이, 퍼즐, 동화책을 따뜻한 그림과 간단한 조작으로 함께 즐길 수 있도록 만들고 있습니다.</p>
-      <p class="status-note">Google Play 비공개 테스트 검토를 진행 중입니다.</p>
-      <ul class="facts">
-        <li>기본 앱 무료 제공</li>
-        <li>광고, 광고 SDK, 원격 추적 없음</li>
-        <li>사용자 계정이나 소셜 공유 없음</li>
-        <li>가족 내레이션 녹음은 기기 안에만 저장</li>
-      </ul>
-    </section>
 
-    <section class="section split">
+<!-- ===== FEATURES / MODES ===== -->
+<section class="section section-alt" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">소미와 함께하는 다섯 가지 놀이</p>
+      <h2 id="features-title">배움이 되는 놀이 시간</h2>
+      <p>보고, 듣고, 만지고, 직접 해보는 경험으로 아이의 호기심이 자연스럽게 자랍니다.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="modes-tabs" role="tablist" aria-label="놀이 모드 선택">
+      <button class="mode-tab active" id="tab-hangul" role="tab" aria-selected="true" aria-controls="panel-hangul" data-tab="hangul">
+        <span class="mode-tab-icon" aria-hidden="true">🔤</span> 한글 놀이
+      </button>
+      <button class="mode-tab" id="tab-coloring" role="tab" aria-selected="false" aria-controls="panel-coloring" data-tab="coloring">
+        <span class="mode-tab-icon" aria-hidden="true">🎨</span> 색칠 놀이
+      </button>
+      <button class="mode-tab" id="tab-jigsaw" role="tab" aria-selected="false" aria-controls="panel-jigsaw" data-tab="jigsaw">
+        <span class="mode-tab-icon" aria-hidden="true">🧩</span> 직소 퍼즐
+      </button>
+      <button class="mode-tab" id="tab-storybook" role="tab" aria-selected="false" aria-controls="panel-storybook" data-tab="storybook">
+        <span class="mode-tab-icon" aria-hidden="true">📖</span> 동화책
+      </button>
+      <button class="mode-tab" id="tab-sticker" role="tab" aria-selected="false" aria-controls="panel-sticker" data-tab="sticker">
+        <span class="mode-tab-icon" aria-hidden="true">⭐</span> 스티커 & 보상
+      </button>
+    </div>
+
+    <!-- Panels -->
+    <div id="panel-hangul" role="tabpanel" aria-labelledby="tab-hangul" class="mode-panel active">
+      <div class="modes-showcase">
+        <div class="mode-screenshot reveal">
+          <div class="mode-screenshot-badge">한글 놀이</div>
+          <img src="assets/screenshots/한글놀이.png" alt="한글 놀이 게임 화면" loading="lazy">
+        </div>
+        <div class="mode-info reveal reveal-delay-1">
+          <h3>글자 모양과 소리를 친근하게 만나요</h3>
+          <p>자음·모음부터 생활 속 단어까지, 아이가 자기 속도로 한글의 세계로 들어옵니다. 귀여운 그림과 함께 발음을 듣고, 직접 글자를 맞춰 보세요.</p>
+          <ul class="mode-points">
+            <li>글자 모양을 시각적으로 익히는 단계별 학습</li>
+            <li>생활 단어와 연결된 그림 카드</li>
+            <li>한글 소리를 반복해서 들으며 자연스럽게 습득</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-coloring" role="tabpanel" aria-labelledby="tab-coloring" class="mode-panel" hidden>
+      <div class="modes-showcase">
+        <div class="mode-screenshot reveal">
+          <div class="mode-screenshot-badge">색칠 놀이</div>
+          <img src="assets/screenshots/색칠놀이1.png" alt="색칠 놀이 게임 화면" loading="lazy">
+        </div>
+        <div class="mode-info reveal reveal-delay-1">
+          <h3>좋아하는 색으로 그림을 완성해요</h3>
+          <p>정해진 정답이 없어요. 아이가 원하는 색을 골라 자유롭게 채워 나가면서 관찰력과 표현력을 키웁니다.</p>
+          <ul class="mode-points">
+            <li>다양한 색깔 팔레트와 직관적인 조작</li>
+            <li>완성한 그림을 저장해 나만의 갤러리 만들기</li>
+            <li>색칠 도안은 동화책 속 장면과 연결</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-jigsaw" role="tabpanel" aria-labelledby="tab-jigsaw" class="mode-panel" hidden>
+      <div class="modes-showcase">
+        <div class="mode-screenshot reveal">
+          <div class="mode-screenshot-badge">직소 퍼즐</div>
+          <img src="assets/screenshots/직소퍼즐.png" alt="직소 퍼즐 게임 화면" loading="lazy">
+        </div>
+        <div class="mode-info reveal reveal-delay-1">
+          <h3>조각을 맞추며 집중력을 키워요</h3>
+          <p>하나씩 조각을 맞추다 보면 어느새 그림이 완성돼요. 스스로 해결하는 즐거움을 통해 성취감과 집중력이 자랍니다.</p>
+          <ul class="mode-points">
+            <li>난이도별 다양한 조각 수</li>
+            <li>완성 시 보상 연출로 성취감 UP</li>
+            <li>한국 민화·동화·일상 등 다양한 이미지</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-storybook" role="tabpanel" aria-labelledby="tab-storybook" class="mode-panel" hidden>
+      <div class="modes-showcase">
+        <div class="mode-screenshot reveal">
+          <div class="mode-screenshot-badge">동화책</div>
+          <img src="assets/screenshots/동화책1.png" alt="동화책 게임 화면" loading="lazy">
+        </div>
+        <div class="mode-info reveal reveal-delay-1">
+          <h3>다정한 이야기 속으로 함께 들어가요</h3>
+          <p>따뜻한 그림과 목소리를 따라가며 상상력을 키웁니다. 보호자가 직접 목소리를 녹음해 가족만의 특별한 동화책을 만들 수도 있어요.</p>
+          <ul class="mode-points">
+            <li>한국 민담, 이솝, 세계 명작, 인물 이야기 등 10개 시리즈</li>
+            <li>보호자 목소리 녹음 — 기기 안에만 저장</li>
+            <li>페이지마다 아름다운 일러스트</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-sticker" role="tabpanel" aria-labelledby="tab-sticker" class="mode-panel" hidden>
+      <div class="modes-showcase">
+        <div class="mode-screenshot reveal">
+          <div class="mode-screenshot-badge">스티커 & 보상</div>
+          <img src="assets/screenshots/스티커북.png" alt="스티커북 화면" loading="lazy">
+        </div>
+        <div class="mode-info reveal reveal-delay-1">
+          <h3>작은 성공을 모아 큰 기쁨을!</h3>
+          <p>놀이를 완료하면 귀여운 스티커를 받아요. 모은 스티커가 채워질수록 아이의 자신감도 함께 자랍니다.</p>
+          <ul class="mode-points">
+            <li>놀이 완료 시 스티커 보상으로 동기 부여</li>
+            <li>모은 스티커로 나만의 스티커북 완성</li>
+            <li>빠른 경쟁보다 자기 속도 존중</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SCREENSHOT GALLERY ===== -->
+<section class="section" id="screenshots" aria-labelledby="screenshots-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">스크린샷</p>
+      <h2 id="screenshots-title">실제 게임 화면</h2>
+      <p>소미 키즈월드에서 만날 수 있는 다채로운 놀이 장면들입니다.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-card reveal" role="button" tabindex="0" aria-label="메인 메뉴 화면 크게 보기" data-img="assets/screenshots/MainMenu.png">
+        <img src="assets/screenshots/MainMenu.png" alt="메인 메뉴" loading="lazy">
+        <div class="gallery-card-label">메인 메뉴</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-1" role="button" tabindex="0" aria-label="한글놀이 화면 크게 보기" data-img="assets/screenshots/한글놀이.png">
+        <img src="assets/screenshots/한글놀이.png" alt="한글 놀이" loading="lazy">
+        <div class="gallery-card-label">한글 놀이</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-2" role="button" tabindex="0" aria-label="색칠놀이 화면 크게 보기" data-img="assets/screenshots/색칠놀이1.png">
+        <img src="assets/screenshots/색칠놀이1.png" alt="색칠 놀이" loading="lazy">
+        <div class="gallery-card-label">색칠 놀이</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-3" role="button" tabindex="0" aria-label="색칠놀이2 화면 크게 보기" data-img="assets/screenshots/색칠놀이2.png">
+        <img src="assets/screenshots/색칠놀이2.png" alt="색칠 놀이 2" loading="lazy">
+        <div class="gallery-card-label">색칠 놀이 — 다양한 도안</div>
+      </div>
+      <div class="gallery-card reveal" role="button" tabindex="0" aria-label="직소퍼즐 화면 크게 보기" data-img="assets/screenshots/직소퍼즐.png">
+        <img src="assets/screenshots/직소퍼즐.png" alt="직소 퍼즐" loading="lazy">
+        <div class="gallery-card-label">직소 퍼즐</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-1" role="button" tabindex="0" aria-label="동화책 메뉴 화면 크게 보기" data-img="assets/screenshots/동화책메뉴페이지.png">
+        <img src="assets/screenshots/동화책메뉴페이지.png" alt="동화책 메뉴" loading="lazy">
+        <div class="gallery-card-label">동화책 메뉴</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-2" role="button" tabindex="0" aria-label="동화책1 화면 크게 보기" data-img="assets/screenshots/동화책1.png">
+        <img src="assets/screenshots/동화책1.png" alt="동화책 1" loading="lazy">
+        <div class="gallery-card-label">동화책 — 페이지</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-3" role="button" tabindex="0" aria-label="동화책2 화면 크게 보기" data-img="assets/screenshots/동화책2.png">
+        <img src="assets/screenshots/동화책2.png" alt="동화책 2" loading="lazy">
+        <div class="gallery-card-label">동화책 — 그림 장면</div>
+      </div>
+      <div class="gallery-card reveal" role="button" tabindex="0" aria-label="동요 화면 크게 보기" data-img="assets/screenshots/동요.png">
+        <img src="assets/screenshots/동요.png" alt="동요" loading="lazy">
+        <div class="gallery-card-label">동요</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-1" role="button" tabindex="0" aria-label="음악교실 화면 크게 보기" data-img="assets/screenshots/음악교실.png">
+        <img src="assets/screenshots/음악교실.png" alt="음악 교실" loading="lazy">
+        <div class="gallery-card-label">음악 교실</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-2" role="button" tabindex="0" aria-label="스티커북 화면 크게 보기" data-img="assets/screenshots/스티커북.png">
+        <img src="assets/screenshots/스티커북.png" alt="스티커북" loading="lazy">
+        <div class="gallery-card-label">스티커북</div>
+      </div>
+      <div class="gallery-card reveal reveal-delay-3" role="button" tabindex="0" aria-label="놀이동산 화면 크게 보기" data-img="assets/screenshots/놀이동산.png">
+        <img src="assets/screenshots/놀이동산.png" alt="놀이동산" loading="lazy">
+        <div class="gallery-card-label">놀이동산</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== STORYBOOK SERIES ===== -->
+<section class="section section-alt" id="storybooks" aria-labelledby="storybooks-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">동화책</p>
+      <h2 id="storybooks-title">10가지 동화책 시리즈</h2>
+      <p>한국 민담부터 이솝 우화, 세계 명작, 인물 이야기까지 — 아이가 좋아할 이야기를 찾아보세요.</p>
+    </div>
+  </div>
+
+  <div class="series-scroll-area" id="series-scroll" role="region" aria-label="동화책 시리즈 목록">
+    <div class="series-row" id="series-row">
+      <div class="series-card reveal">
+        <div class="series-card-thumb">
+          <img src="assets/series/somi-family.png" alt="소미 가족 이야기 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">소미 가족 이야기</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-1">
+        <div class="series-card-thumb">
+          <img src="assets/series/kongkong.png" alt="콩콩 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">콩콩 이야기</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-2">
+        <div class="series-card-thumb">
+          <img src="assets/series/korean-folk-retold.png" alt="한국 전래동화 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">한국 전래동화</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-3">
+        <div class="series-card-thumb">
+          <img src="assets/series/world-classics-theater.png" alt="세계 명작 극장 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">세계 명작 극장</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal">
+        <div class="series-card-thumb">
+          <img src="assets/series/aesop-thinking-playground.png" alt="이솝 생각 놀이터 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">이솝 생각 놀이터</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-1">
+        <div class="series-card-thumb">
+          <img src="assets/series/little-scientist-lulu.png" alt="꼬마 과학자 루루 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">꼬마 과학자 루루</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-2">
+        <div class="series-card-thumb">
+          <img src="assets/series/yummy-little-chef.png" alt="냠냠 꼬마 요리사 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">냠냠 꼬마 요리사</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-3">
+        <div class="series-card-thumb">
+          <img src="assets/series/emotion-crayon.png" alt="감정 크레용 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">감정 크레용</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal">
+        <div class="series-card-thumb">
+          <img src="assets/series/great-people-one-step.png" alt="위인 한 걸음 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">위인 한 걸음</div>
+          <div class="series-card-count">20권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-1">
+        <div class="series-card-thumb">
+          <img src="assets/series/thinking-clue-playground.png" alt="생각 단서 놀이터 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">생각 단서 놀이터</div>
+          <div class="series-card-count">20권 수록</div>
+        </div>
+      </div>
+      <div class="series-card reveal reveal-delay-2">
+        <div class="series-card-thumb">
+          <img src="assets/series/musical-storybook-theater.png" alt="뮤지컬 그림책 극장 시리즈 표지" loading="lazy">
+        </div>
+        <div class="series-card-info">
+          <div class="series-card-title">뮤지컬 그림책 극장</div>
+          <div class="series-card-count">10권 수록</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TRUST / WHY ===== -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="eyebrow">가족이 편안한 이유</p>
+      <h2 id="about-title">안심하고 함께 쓰는 앱</h2>
+      <p>소미 키즈월드는 광고, 계정, 외부 추적 없이 아이와 가족이 편안하게 즐길 수 있도록 설계되었습니다.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">🆓</div>
+        <div class="feature-title">기본 앱 무료</div>
+        <div class="feature-desc">기본 콘텐츠는 무료로 즐길 수 있습니다. 추가 동화책 시리즈는 Google Play 결제로 구매할 수 있어요.</div>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon" aria-hidden="true">🚫</div>
+        <div class="feature-title">광고 없음</div>
+        <div class="feature-desc">광고, 광고 SDK, 오퍼월, 분석 기반 수익화 없음. 아이의 놀이 흐름이 끊기지 않아요.</div>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon" aria-hidden="true">🔒</div>
+        <div class="feature-title">계정 불필요</div>
+        <div class="feature-desc">사용자 계정, 소셜 공유 없음. 개인 정보가 외부로 나가지 않습니다.</div>
+      </div>
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon" aria-hidden="true">🎙️</div>
+        <div class="feature-title">가족 내레이션</div>
+        <div class="feature-desc">보호자 목소리를 녹음해 동화책을 읽어줄 수 있어요. 녹음 파일은 기기 안에만 저장됩니다.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <div class="feature-title">태블릿 최적화</div>
+        <div class="feature-desc">Android 태블릿 화면에 맞게 설계된 큰 그림과 큰 버튼. 어린아이도 쉽게 조작할 수 있어요.</div>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon" aria-hidden="true">🌱</div>
+        <div class="feature-title">아이 속도 존중</div>
+        <div class="feature-desc">빠른 경쟁이나 복잡한 미션보다, 아이가 자기 속도로 고르고 완성하고 다시 도전하는 시간을 소중히 여깁니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== CTA ===== -->
+<section class="cta-section section-alt" id="download" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-icon" aria-hidden="true">🌟</div>
+      <h2 id="cta-title">오늘 바로 시작해 보세요</h2>
+      <p>아이가 좋아할 한글 한 소리, 한 권의 이야기, 한 번의 색칠에서 시작해 보세요.<br>
+      소미 키즈월드는 아이의 작은 성취가 매일의 자신감으로 이어지도록 곁에서 함께합니다.</p>
+      <div class="cta-buttons">
+        <a id="cta-gplay-btn"
+           href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+           target="_blank" rel="noopener noreferrer"
+           class="btn btn-google-play btn-lg"
+           aria-label="Google Play에서 소미 키즈월드 다운로드">
+          <svg class="gp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.18 1.05C2.75 1.28 2.5 1.73 2.5 2.28v19.44c0 .55.25 1 .68 1.23l.12.07L13.44 12v-.27L3.3.98l-.12.07z" fill="#EA4335"/>
+            <path d="M17.09 15.79l-3.65-3.65v-.27l3.65-3.65.08.05 4.33 2.46c1.24.7 1.24 1.86 0 2.56l-4.33 2.46-.08.04z" fill="#FBBC04"/>
+            <path d="M17.17 15.75L13.44 12 3.18 22.95c.41.44 1.07.49 1.81.07l12.18-7.27z" fill="#34A853"/>
+            <path d="M17.17 8.25L4.99 1c-.74-.43-1.4-.38-1.81.07L13.44 12l3.73-3.75z" fill="#4285F4"/>
+          </svg>
+          <span class="gp-label">
+            <span class="gp-sub">Google Play에서</span>
+            <span class="gp-main">무료 다운로드</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/app_icon.png" alt="CrayonSmile 로고">
+        <div class="footer-brand-name">CrayonSmile</div>
+        <div class="footer-brand-tagline">아이와 가족을 위한 조용하고 따뜻한 학습 게임을 만듭니다.<br>대한민국 개인사업자</div>
+      </div>
+
       <div>
-        <p class="eyebrow">Google Play 개발자 정보</p>
-        <h2>개발자 프로필</h2>
-        <p>개발자명: <strong>CrayonSmile</strong></p>
-        <p>사업 형태: 대한민국 개인사업자</p>
+        <div class="footer-col-title">링크</div>
+        <ul class="footer-links">
+          <li><a href="#features">놀이 소개</a></li>
+          <li><a href="#screenshots">스크린샷</a></li>
+          <li><a href="#storybooks">동화책 시리즈</a></li>
+          <li><a href="en/" lang="en">English</a></li>
+        </ul>
       </div>
-      <div id="contact">
-        <p class="eyebrow">문의</p>
-        <h2>개인정보 및 지원 문의</h2>
-        <p>이메일: <a href="mailto:crayonsmile.games@gmail.com">crayonsmile.games@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/crayonsmilegames">github.com/crayonsmilegames</a></p>
-      </div>
-    </section>
-  </main>
 
-  <footer>
-    <p>© 2026 CrayonSmile. All rights reserved.</p>
-    <p><a href="privacy/">개인정보처리방침</a></p>
-  </footer>
+      <div>
+        <div class="footer-col-title">지원 & 법적 고지</div>
+        <ul class="footer-links">
+          <li><a href="privacy/">개인정보처리방침</a></li>
+          <li><a href="mailto:crayonsmile.games@gmail.com">이메일 문의</a></li>
+          <li><a href="https://github.com/crayonsmilegames" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li>
+            <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+               target="_blank" rel="noopener noreferrer">Google Play 페이지</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 CrayonSmile. All rights reserved.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+         target="_blank" rel="noopener noreferrer"
+         class="footer-copy" style="color: hsl(25 70% 70%);">
+        Google Play에서 다운로드
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===== MOBILE STICKY DOWNLOAD BAR ===== -->
+<div class="sticky-download-bar" id="sticky-bar" role="region" aria-label="앱 다운로드">
+  <div class="sticky-bar-inner">
+    <div class="sticky-bar-icon">
+      <img src="assets/app_icon.png" alt="소미 키즈월드 아이콘">
+    </div>
+    <div class="sticky-bar-text">
+      <div class="sticky-bar-title">소미 키즈월드</div>
+      <div class="sticky-bar-sub">기본 앱 무료 · 광고 없음</div>
+    </div>
+    <a id="sticky-gplay-btn"
+       href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+       target="_blank" rel="noopener noreferrer"
+       class="sticky-bar-btn"
+       aria-label="Google Play에서 소미 키즈월드 무료 다운로드">
+      무료 다운로드
+    </a>
+  </div>
+</div>
+
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="스크린샷 크게 보기">
+  <button class="lightbox-close" id="lightbox-close" aria-label="닫기">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+</div>
+
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(function() {
+  'use strict';
+
+  /* ---- Scroll: reveal animations ---- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ---- Nav: shadow on scroll ---- */
+  const nav = document.getElementById('top-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ---- Sticky download bar ---- */
+  const stickyBar = document.getElementById('sticky-bar');
+  const heroBtn = document.getElementById('hero-gplay-btn');
+
+  if (stickyBar && heroBtn) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      const isHeroVisible = entries[0].isIntersecting;
+      stickyBar.classList.toggle('visible', !isHeroVisible);
+    }, { threshold: 0.1 });
+    heroObserver.observe(heroBtn);
+  }
+
+  /* ---- Mode tabs ---- */
+  const tabs = document.querySelectorAll('.mode-tab');
+  const panels = document.querySelectorAll('.mode-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      panels.forEach(p => {
+        p.classList.remove('active');
+        p.hidden = true;
+      });
+
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+
+      const panel = document.getElementById('panel-' + target);
+      if (panel) {
+        panel.classList.add('active');
+        panel.hidden = false;
+        // Re-trigger reveal for newly shown panel
+        panel.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+          setTimeout(() => el.classList.add('visible'), 50);
+        });
+      }
+    });
+
+    /* Keyboard support */
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        tab.click();
+      }
+    });
+  });
+
+  /* ---- Gallery lightbox ---- */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lightboxClose.focus();
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.gallery-card').forEach(card => {
+    const onClick = () => {
+      const src = card.dataset.img;
+      const alt = card.querySelector('img')?.alt || '';
+      openLightbox(src, alt);
+    };
+    card.addEventListener('click', onClick);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(); }
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  /* ---- Series drag scroll (momentum) ---- */
+  const scrollArea = document.getElementById('series-scroll');
+  if (scrollArea) {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let velX = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let animFrame = null;
+
+    scrollArea.addEventListener('mousedown', (e) => {
+      isDown = true;
+      scrollArea.classList.add('dragging');
+      startX = e.pageX - scrollArea.offsetLeft;
+      scrollLeft = scrollArea.scrollLeft;
+      velX = 0;
+      lastX = e.pageX;
+      lastTime = Date.now();
+      cancelAnimationFrame(animFrame);
+    });
+
+    scrollArea.addEventListener('mouseleave', () => { isDown = false; scrollArea.classList.remove('dragging'); });
+    scrollArea.addEventListener('mouseup', () => {
+      isDown = false;
+      scrollArea.classList.remove('dragging');
+      startMomentum();
+    });
+    scrollArea.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - scrollArea.offsetLeft;
+      const walk = (x - startX) * 1.4;
+      const now = Date.now();
+      velX = (e.pageX - lastX) / Math.max(now - lastTime, 1) * 16;
+      lastX = e.pageX;
+      lastTime = now;
+      scrollArea.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch
+    scrollArea.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].pageX;
+      scrollLeft = scrollArea.scrollLeft;
+      velX = 0;
+      lastX = startX;
+      lastTime = Date.now();
+      cancelAnimationFrame(animFrame);
+    }, { passive: true });
+    scrollArea.addEventListener('touchmove', (e) => {
+      const x = e.touches[0].pageX;
+      const now = Date.now();
+      velX = (x - lastX) / Math.max(now - lastTime, 1) * 16;
+      lastX = x;
+      lastTime = now;
+      scrollArea.scrollLeft -= (x - startX) * 0.3;
+      startX = x;
+    }, { passive: true });
+    scrollArea.addEventListener('touchend', startMomentum, { passive: true });
+
+    function startMomentum() {
+      cancelAnimationFrame(animFrame);
+      (function momentum() {
+        if (Math.abs(velX) < 0.5) return;
+        scrollArea.scrollLeft -= velX;
+        velX *= 0.93;
+        animFrame = requestAnimationFrame(momentum);
+      })();
+    }
+  }
+})();
+</script>
+
 </body>
 </html>
