@@ -7,81 +7,174 @@
   <meta name="description" content="소미 키즈월드 및 CrayonSmile Google Play 앱 개인정보처리방침.">
   <link rel="alternate" hreflang="ko" href="https://crayonsmilegames.github.io/privacy/">
   <link rel="alternate" hreflang="en" href="https://crayonsmilegames.github.io/en/privacy/">
+  <link rel="icon" type="image/png" href="../assets/app_icon.png">
   <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    /* Policy page overrides */
+    .policy-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    .policy-wrap h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 8px;
+    }
+    .policy-wrap .lead {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 40px;
+    }
+    .policy-section {
+      margin-bottom: 36px;
+    }
+    .policy-section h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--color-primary-light);
+    }
+    .policy-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+    .policy-section p:last-child { margin-bottom: 0; }
+    .policy-en {
+      background: var(--bg-section);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px;
+      margin-top: 48px;
+    }
+    .policy-en h2 {
+      border-color: var(--color-accent-light);
+    }
+    /* Simple footer for sub-pages */
+    .sub-footer {
+      background: hsl(25, 12%, 16%);
+      color: hsl(25 10% 65%);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .sub-footer a {
+      color: hsl(25 70% 68%);
+      transition: color 0.15s;
+    }
+    .sub-footer a:hover { color: var(--color-primary); }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="../" aria-label="CrayonSmile home">
-      <img src="../assets/crayonsmile-logo-transparent.png" alt="CrayonSmile logo">
-    </a>
-    <nav aria-label="주요 메뉴">
-      <a href="../#apps">앱 소개</a>
-      <a href="../#contact">문의</a>
-      <a href="./">개인정보처리방침</a>
-      <span class="lang-switch" aria-label="언어 선택">
-        <strong>한국어</strong>
-        <a href="../en/privacy/" lang="en">English</a>
+
+<!-- NAV -->
+<nav class="top-nav" id="top-nav" role="navigation" aria-label="메인 내비게이션">
+  <a class="nav-brand" href="../" aria-label="소미 키즈월드 홈">
+    <img src="../assets/app_icon.png" alt="소미 키즈월드 아이콘">
+    <span class="nav-brand-name">소미 키즈월드</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../#features">놀이 소개</a></li>
+    <li><a href="../#screenshots">스크린샷</a></li>
+    <li><a href="../#storybooks">동화책 시리즈</a></li>
+    <li><a href="./">개인정보처리방침</a></li>
+    <li><a href="../en/privacy/" lang="en">English</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+       target="_blank" rel="noopener noreferrer"
+       class="btn btn-google-play"
+       aria-label="Google Play에서 소미 키즈월드 다운로드">
+      <svg class="gp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3.18 1.05C2.75 1.28 2.5 1.73 2.5 2.28v19.44c0 .55.25 1 .68 1.23l.12.07L13.44 12v-.27L3.3.98l-.12.07z" fill="#EA4335"/>
+        <path d="M17.09 15.79l-3.65-3.65v-.27l3.65-3.65.08.05 4.33 2.46c1.24.7 1.24 1.86 0 2.56l-4.33 2.46-.08.04z" fill="#FBBC04"/>
+        <path d="M17.17 15.75L13.44 12 3.18 22.95c.41.44 1.07.49 1.81.07l12.18-7.27z" fill="#34A853"/>
+        <path d="M17.17 8.25L4.99 1c-.74-.43-1.4-.38-1.81.07L13.44 12l3.73-3.75z" fill="#4285F4"/>
+      </svg>
+      <span class="gp-label">
+        <span class="gp-sub">Google Play</span>
+        <span class="gp-main">무료 다운로드</span>
       </span>
-    </nav>
-  </header>
+    </a>
+  </div>
+</nav>
 
-  <main class="policy">
-    <section class="section">
-      <p class="eyebrow">개인정보처리방침</p>
-      <h1>CrayonSmile 개인정보처리방침</h1>
-      <p class="lead">시행일: 2026년 6월 23일</p>
+<!-- CONTENT -->
+<main style="padding-top: 60px;">
+  <div class="policy-wrap">
+    <p class="eyebrow" style="margin-top: 32px;">법적 고지</p>
+    <h1>CrayonSmile 개인정보처리방침</h1>
+    <p class="lead">시행일: 2026년 6월 23일</p>
+
+    <div class="policy-section">
       <p>CrayonSmile은 어린이와 가족이 안심하고 사용할 수 있는 학습 게임을 만드는 대한민국 개인사업자입니다. 이 문서는 CrayonSmile이 Google Play에 게시하는 앱, 특히 <strong>소미 키즈월드(Somi Kids World)</strong>의 개인정보 처리 방침을 설명합니다.</p>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="policy-section">
       <h2>1. 수집하는 개인정보</h2>
       <p>CrayonSmile 앱은 사용자의 이름, 이메일, 전화번호, 위치정보, 연락처, 결제정보, 광고 식별자와 같은 개인정보를 직접 수집하지 않습니다.</p>
       <p>소미 키즈월드는 가족 내레이션 기능을 위해 보호자가 선택한 경우에만 마이크 권한을 요청할 수 있습니다. 녹음 파일은 사용자의 기기 안에 로컬 데이터로 저장되며, CrayonSmile 서버로 전송되지 않습니다.</p>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="policy-section">
       <h2>2. 개인정보의 이용 목적</h2>
       <p>앱은 어린이 학습과 가족용 놀이 경험을 제공하기 위해 로컬 데이터를 사용할 수 있습니다. 예를 들어 보호자가 직접 녹음한 음성은 앱 안에서 동화책 내레이션이나 가족용 학습 경험에 사용될 수 있습니다.</p>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="policy-section">
       <h2>3. 제3자 제공 및 공유</h2>
       <p>CrayonSmile은 앱에서 직접 수집한 개인정보를 제3자에게 판매하거나 공유하지 않습니다. 앱에는 광고, 광고 SDK, 분석 SDK, 사용자 추적 목적의 원격 서비스를 사용하지 않습니다.</p>
       <p>다만 Google Play를 통해 앱을 설치하거나 실행하는 과정에서 Google이 자체 정책에 따라 설치 통계, 기기 정보, 오류 보고 등 플랫폼 운영 데이터를 처리할 수 있습니다. 이 데이터는 Google의 개인정보처리방침과 Google Play 정책의 적용을 받습니다.</p>
       <p>앱에서 유료 콘텐츠 팩을 제공하는 경우 결제는 Google Play 결제 시스템을 통해 처리됩니다. CrayonSmile은 사용자의 결제 카드 번호나 결제 계정 비밀번호를 직접 수집하거나 저장하지 않습니다.</p>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="policy-section">
       <h2>4. 보관 및 삭제</h2>
       <p>앱에서 생성된 로컬 데이터는 사용자의 기기에 보관됩니다. 사용자는 앱의 삭제 기능, 설정 초기화 기능, 또는 앱 삭제를 통해 로컬 데이터를 삭제할 수 있습니다.</p>
       <p>CrayonSmile은 별도 서버에 사용자 계정이나 원격 개인정보 데이터베이스를 운영하지 않습니다.</p>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="policy-section">
       <h2>5. 어린이 개인정보 보호</h2>
       <p>CrayonSmile 앱은 어린이와 가족을 대상으로 하므로 불필요한 개인정보 수집을 피하는 것을 원칙으로 합니다. 어린이가 직접 개인정보를 입력하거나 외부로 전송하도록 요구하지 않습니다. 가족 내레이션 녹음과 콘텐츠 구매 관리는 보호자 중심의 흐름에서 제공됩니다.</p>
-    </section>
+    </div>
 
-    <section class="section">
+    <div class="policy-section">
       <h2>6. 문의</h2>
       <p>개인정보 또는 앱 이용과 관련한 문의는 아래 연락처로 보내주세요.</p>
       <p>이메일: <a href="mailto:crayonsmile.games@gmail.com">crayonsmile.games@gmail.com</a></p>
       <p>개발자명: CrayonSmile</p>
-    </section>
+    </div>
 
-    <section class="section english">
+    <div class="policy-section policy-en">
       <h2>English Summary</h2>
       <p>CrayonSmile does not directly collect personal information such as name, email address, phone number, location, contacts, payment information, or advertising identifiers through Somi Kids World.</p>
       <p>If a parent uses the family narration recording feature, the recording may be stored locally on the user's device and is not transmitted to CrayonSmile servers.</p>
       <p>CrayonSmile does not sell personal data and does not use advertising SDKs, analytics SDKs, or remote tracking services in Somi Kids World.</p>
       <p>Paid content packs, if offered, are processed through Google Play billing. CrayonSmile does not directly collect or store payment card numbers or payment account passwords.</p>
       <p>Contact: <a href="mailto:crayonsmile.games@gmail.com">crayonsmile.games@gmail.com</a></p>
-    </section>
-  </main>
+    </div>
+  </div>
+</main>
 
-  <footer>
-    <p>© 2026 CrayonSmile. All rights reserved.</p>
-    <p><a href="../">홈으로</a></p>
-  </footer>
+<footer class="sub-footer">
+  <span>© 2026 CrayonSmile. All rights reserved.</span>
+  <a href="../">홈으로</a>
+  <a href="../en/privacy/" lang="en">English version</a>
+  <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld" target="_blank" rel="noopener noreferrer">Google Play</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('top-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>
+
 </body>
 </html>

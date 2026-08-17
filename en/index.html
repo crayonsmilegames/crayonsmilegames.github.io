@@ -3,79 +3,252 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CrayonSmile</title>
-  <meta name="description" content="CrayonSmile creates calm, warm learning games for children and families.">
-  <meta property="og:title" content="CrayonSmile">
-  <meta property="og:description" content="Calm, warm learning games for children and families.">
+  <title>Somi Kids World — Korean Learning App for Kids | CrayonSmile</title>
+  <meta name="description" content="Somi Kids World is a warm, ad-free Android tablet learning app for children and families. Hangul, storybooks, coloring, puzzles — free to download on Google Play.">
+  <meta property="og:title" content="Somi Kids World — First Learning Playground">
+  <meta property="og:description" content="Hangul, storybooks, coloring, and puzzles — a warm first learning playground for kids.">
+  <meta property="og:image" content="../assets/feature_graphic.png">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crayonsmilegames.github.io/en/">
   <link rel="alternate" hreflang="ko" href="https://crayonsmilegames.github.io/">
   <link rel="alternate" hreflang="en" href="https://crayonsmilegames.github.io/en/">
+  <link rel="icon" type="image/png" href="../assets/app_icon.png">
   <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    /* Sub-page simple footer */
+    .sub-footer {
+      background: hsl(25, 12%, 16%);
+      color: hsl(25 10% 65%);
+      padding: 28px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+    }
+    .sub-footer a { color: hsl(25 70% 68%); transition: color 0.15s; }
+    .sub-footer a:hover { color: var(--color-primary); }
+
+    /* English page simple content layout */
+    .en-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+    .en-hero {
+      text-align: center;
+      padding: 60px 0 48px;
+    }
+    .en-hero img {
+      width: 88px;
+      height: 88px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px hsl(25 30% 20% / 0.15);
+      margin: 0 auto 20px;
+    }
+    .en-hero h1 { margin-bottom: 10px; }
+    .en-hero p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.75;
+    }
+    .en-section {
+      margin-bottom: 48px;
+    }
+    .en-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .en-section p {
+      color: var(--text-secondary);
+      font-size: 0.97rem;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .en-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .en-feature-item {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 20px 18px;
+      box-shadow: var(--shadow-card);
+    }
+    .en-feature-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .en-feature-title {
+      font-family: 'Jua', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .en-feature-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .contact-card {
+      background: var(--bg-section);
+      border-radius: var(--radius-lg);
+      padding: 28px 28px;
+    }
+    .contact-card h2 { margin-bottom: 12px; }
+    .contact-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
+    .contact-card a { color: var(--color-primary); }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="./" aria-label="CrayonSmile home">
-      <img src="../assets/crayonsmile-logo-transparent.png" alt="CrayonSmile logo">
-    </a>
-    <nav aria-label="Main navigation">
-      <a href="#apps">Apps</a>
-      <a href="#contact">Contact</a>
-      <a href="privacy/">Privacy Policy</a>
-      <span class="lang-switch" aria-label="Language selection">
-        <a href="../" lang="ko">한국어</a>
-        <strong>English</strong>
-      </span>
-    </nav>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Learning games for children and families</p>
-        <h1>CrayonSmile</h1>
-        <p class="lead">CrayonSmile is a small Korea-based development studio creating warm learning games and story experiences that children and families can enjoy comfortably.</p>
-        <div class="actions">
-          <a class="button primary" href="privacy/">Privacy Policy</a>
-          <a class="button" href="#contact">Contact</a>
+<!-- NAV -->
+<nav class="top-nav" id="top-nav" role="navigation" aria-label="Main navigation">
+  <a class="nav-brand" href="../" aria-label="Somi Kids World home">
+    <img src="../assets/app_icon.png" alt="Somi Kids World icon">
+    <span class="nav-brand-name">Somi Kids World</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="privacy/">Privacy Policy</a></li>
+    <li><a href="../" lang="ko">한국어</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+       target="_blank" rel="noopener noreferrer"
+       class="btn btn-google-play"
+       aria-label="Download Somi Kids World on Google Play">
+      <svg class="gp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M3.18 1.05C2.75 1.28 2.5 1.73 2.5 2.28v19.44c0 .55.25 1 .68 1.23l.12.07L13.44 12v-.27L3.3.98l-.12.07z" fill="#EA4335"/>
+        <path d="M17.09 15.79l-3.65-3.65v-.27l3.65-3.65.08.05 4.33 2.46c1.24.7 1.24 1.86 0 2.56l-4.33 2.46-.08.04z" fill="#FBBC04"/>
+        <path d="M17.17 15.75L13.44 12 3.18 22.95c.41.44 1.07.49 1.81.07l12.18-7.27z" fill="#34A853"/>
+        <path d="M17.17 8.25L4.99 1c-.74-.43-1.4-.38-1.81.07L13.44 12l3.73-3.75z" fill="#4285F4"/>
+      </svg>
+      <span class="gp-label">
+        <span class="gp-sub">Google Play</span>
+        <span class="gp-main">Free Download</span>
+      </span>
+    </a>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<main style="padding-top: 60px;">
+  <div class="en-content">
+
+    <!-- Hero -->
+    <div class="en-hero">
+      <img src="../assets/app_icon.png" alt="Somi Kids World app icon">
+      <p class="eyebrow">For Children &amp; Families</p>
+      <h1>Somi Kids World</h1>
+      <p>A warm, ad-free Android tablet learning app where children explore Korean (Hangul), storybooks, coloring, and puzzles at their own pace.</p>
+      <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld"
+         target="_blank" rel="noopener noreferrer"
+         class="btn btn-primary btn-lg"
+         aria-label="Download Somi Kids World on Google Play">
+        <svg class="gp-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3.18 1.05C2.75 1.28 2.5 1.73 2.5 2.28v19.44c0 .55.25 1 .68 1.23l.12.07L13.44 12v-.27L3.3.98l-.12.07z" fill="rgba(255,255,255,0.9)"/>
+          <path d="M17.09 15.79l-3.65-3.65v-.27l3.65-3.65.08.05 4.33 2.46c1.24.7 1.24 1.86 0 2.56l-4.33 2.46-.08.04z" fill="rgba(255,255,255,0.9)"/>
+          <path d="M17.17 15.75L13.44 12 3.18 22.95c.41.44 1.07.49 1.81.07l12.18-7.27z" fill="rgba(255,255,255,0.9)"/>
+          <path d="M17.17 8.25L4.99 1c-.74-.43-1.4-.38-1.81.07L13.44 12l3.73-3.75z" fill="rgba(255,255,255,0.9)"/>
+        </svg>
+        Free Download on Google Play
+      </a>
+    </div>
+
+    <!-- Features -->
+    <div class="en-section" id="features">
+      <p class="eyebrow">Five Ways to Play</p>
+      <h2>Learning Through Play</h2>
+      <p>Somi Kids World brings together five gentle activities designed to spark curiosity and build confidence — one small step at a time.</p>
+      <div class="en-features">
+        <div class="en-feature-item">
+          <div class="en-feature-icon" aria-hidden="true">🔤</div>
+          <div class="en-feature-title">Hangul Play</div>
+          <div class="en-feature-desc">Meet Korean letters through familiar pictures and sounds.</div>
+        </div>
+        <div class="en-feature-item">
+          <div class="en-feature-icon" aria-hidden="true">🎨</div>
+          <div class="en-feature-title">Coloring</div>
+          <div class="en-feature-desc">Fill beautiful illustrations with any color you choose.</div>
+        </div>
+        <div class="en-feature-item">
+          <div class="en-feature-icon" aria-hidden="true">🧩</div>
+          <div class="en-feature-title">Jigsaw Puzzles</div>
+          <div class="en-feature-desc">Build focus and problem-solving one piece at a time.</div>
+        </div>
+        <div class="en-feature-item">
+          <div class="en-feature-icon" aria-hidden="true">📖</div>
+          <div class="en-feature-title">Storybooks</div>
+          <div class="en-feature-desc">10 series — Korean folk tales, Aesop, world classics, and more.</div>
+        </div>
+        <div class="en-feature-item">
+          <div class="en-feature-icon" aria-hidden="true">⭐</div>
+          <div class="en-feature-title">Stickers &amp; Rewards</div>
+          <div class="en-feature-desc">Collect stickers and celebrate every small achievement.</div>
         </div>
       </div>
-      <div class="hero-mark" aria-hidden="true">
-        <img src="../assets/crayonsmile-logo-transparent.png" alt="">
-      </div>
-    </section>
+    </div>
 
-    <section id="apps" class="section">
-      <p class="eyebrow">Current project</p>
-      <h2>Somi Kids World</h2>
-      <p><strong>Somi Kids World</strong> is an Android tablet learning game for children and families. It brings together Hangul play, coloring, puzzles, and storybooks in a warm, simple, family-friendly experience.</p>
-      <p class="status-note">Currently under Google Play closed testing review.</p>
-      <ul class="facts">
-        <li>Free base app</li>
-        <li>No ads, ad SDKs, or remote tracking</li>
-        <li>No user accounts or social sharing</li>
-        <li>Family narration recordings stay on the device</li>
-      </ul>
-    </section>
-
-    <section class="section split">
-      <div>
-        <p class="eyebrow">Google Play developer information</p>
-        <h2>Developer Profile</h2>
-        <p>Developer name: <strong>CrayonSmile</strong></p>
-        <p>Business form: Korean sole proprietorship</p>
+    <!-- Trust -->
+    <div class="en-section">
+      <p class="eyebrow">Family-First Design</p>
+      <h2>Why Families Trust Somi Kids World</h2>
+      <div class="features-grid" style="margin-top: 12px;">
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🆓</div>
+          <div class="feature-title">Free Base App</div>
+          <div class="feature-desc">Core content is free. Additional storybook series are available via Google Play Billing.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🚫</div>
+          <div class="feature-title">Zero Ads</div>
+          <div class="feature-desc">No ads, ad SDKs, offerwalls, or analytics-driven monetization.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🔒</div>
+          <div class="feature-title">No Account Needed</div>
+          <div class="feature-desc">No user accounts, no social sharing, no personal data collected.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🎙️</div>
+          <div class="feature-title">Family Narration</div>
+          <div class="feature-desc">Parents can record their voice for storybooks. Recordings stay on-device only.</div>
+        </div>
       </div>
-      <div id="contact">
-        <p class="eyebrow">Contact</p>
-        <h2>Privacy and Support</h2>
-        <p>Email: <a href="mailto:crayonsmile.games@gmail.com">crayonsmile.games@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/crayonsmilegames">github.com/crayonsmilegames</a></p>
-      </div>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    <p>© 2026 CrayonSmile. All rights reserved.</p>
-    <p><a href="privacy/">Privacy Policy</a></p>
-  </footer>
+    <!-- Contact -->
+    <div class="en-section contact-card" id="contact">
+      <p class="eyebrow">Developer</p>
+      <h2>About CrayonSmile</h2>
+      <p>CrayonSmile is a small Korean indie studio creating calm, warm learning games for children and families.</p>
+      <p><strong>Developer:</strong> CrayonSmile</p>
+      <p><strong>Business:</strong> Korean sole proprietorship</p>
+      <p><strong>Email:</strong> <a href="mailto:crayonsmile.games@gmail.com">crayonsmile.games@gmail.com</a></p>
+      <p><strong>GitHub:</strong> <a href="https://github.com/crayonsmilegames" target="_blank" rel="noopener noreferrer">github.com/crayonsmilegames</a></p>
+      <p style="margin-top: 16px;"><a href="privacy/">Privacy Policy →</a></p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="sub-footer">
+  <span>© 2026 CrayonSmile. All rights reserved.</span>
+  <a href="../" lang="ko">한국어</a>
+  <a href="privacy/">Privacy Policy</a>
+  <a href="https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld" target="_blank" rel="noopener noreferrer">Google Play</a>
+</footer>
+
+<script>
+  const nav = document.getElementById('top-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+</script>
+
 </body>
 </html>
