@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://crayonsmilegames.github.io/sitemap.xml
