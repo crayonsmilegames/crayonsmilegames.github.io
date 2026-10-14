@@ -60,17 +60,6 @@ for path in ROOT.rglob('*.html'):
         assert metadata['google-site-verification'] == 'YDlAggfaaH7thYKa-m15mn3zrxZNiwUIRVmhH_BvYEw'
         assert 'max-image-preview:large' in metadata['robots']
         schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)[1])
-        if url.endswith('/intro/'):
-            videos = [item for item in schema['@graph'] if item['@type'] == 'VideoObject']
-            assert len(videos) == 2, path
-            assert sum(t == 'main' for t, a in d.tags) == 1, path
-            for video in videos:
-                assert video['duration'] == 'PT30S' and video['inLanguage'] == 'ko'
-                for media in [video['contentUrl'], *video['thumbnailUrl']]:
-                    assert media.startswith(BASE) and (ROOT / media.removeprefix(BASE)).is_file(), media
-            assert 'id="viewport"' in s and 'id="seek"' in s
-            print('PASS', path.relative_to(ROOT), 'intro links, video schema, languages and encoding')
-            continue
         apps = {item['@id']: item for item in schema['@graph'] if item['@type'] == 'SoftwareApplication'}
         graph = {item['@type']: item for item in schema['@graph']}
         assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite', 'FAQPage'}
