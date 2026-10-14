@@ -25,11 +25,6 @@
     particle.style.cssText = `--x:${x}%;--y:${y}%;--size:${i%3===0?15:4+i%3}px;--delay:${i*85}ms;--drift:${i%2?12:-9}px`;
     dust.append(particle);
   });
-  const replay = document.createElement('button');
-  replay.className = 'scene-replay';
-  replay.type = 'button';
-  replay.innerHTML = '<span aria-hidden="true">✦</span> 그림에 햇살 더하기';
-  scene.append(replay);
   let visible = false;
   let introduced = false;
   let cleanup;
@@ -53,11 +48,6 @@
     scene.classList.add('scene-lit');
     cleanup = setTimeout(() => scene.classList.remove('scene-lit'), 4600);
   }
-  function sync() {
-    replay.disabled = motion.matches;
-    stop();
-  }
-  replay.addEventListener('click', play);
   scene.addEventListener('pointerenter', event => {
     if (event.pointerType === 'mouse' && !motion.matches) play();
   });
@@ -76,7 +66,7 @@
   scene.addEventListener('pointerleave', resetTilt);
   scene.addEventListener('pointercancel', resetTilt);
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
-  motion.addEventListener('change', sync);
+  motion.addEventListener('change', stop);
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => {
       visible = entries[0].isIntersecting;
@@ -87,5 +77,5 @@
     visible = true;
     image.decode().then(play).catch(() => {});
   }
-  sync();
+  stop();
 })();

@@ -15,17 +15,14 @@
 .scene-lit .scene-sun{animation:storybook-glow 4400ms ease-in-out both}
 .scene-lit .scene-dust{opacity:1}
 .scene-lit .scene-dust i{animation:storybook-dust 2600ms ease-in-out both;animation-delay:var(--delay)}
-.scene-replay{position:absolute;right:16px;bottom:16px;z-index:3;display:flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:8px 13px;border:1px solid #ffffffb0;border-radius:999px;background:#fff8e9e8;color:#62422a;box-shadow:0 3px 14px #35291f20;font-size:11px}
-.scene-replay span{font-size:20px;line-height:1;color:#a45e19}.scene-replay:hover{background:#fffaf2}
 .scene-hover{box-shadow:0 28px 46px -22px #713c2e70}
 @keyframes storybook-sunlight{0%{opacity:0;transform:translateX(-45%) rotate(-7deg)}20%{opacity:.9}75%{opacity:.65}100%{opacity:0;transform:translateX(45%) rotate(7deg)}}
 @keyframes storybook-glow{0%,100%{opacity:0}28%,65%{opacity:.7}}
 @keyframes storybook-dust{0%{opacity:0;transform:translate(0,24px) scale(.2)}28%{opacity:.85}70%{opacity:.6}100%{opacity:0;transform:translate(var(--drift),-45px) scale(1.2)}}
 @media(max-width:1000px){.storybook-scene{border-top-left-radius:80px}}
-@media(max-width:700px){.storybook-scene{border-radius:64px 16px 16px 16px}.scene-viewport{aspect-ratio:1.75}.scene-replay{right:10px;bottom:10px;min-height:44px;padding:7px 10px;font-size:10px}}
-@media(prefers-reduced-motion:reduce){.storybook-scene,.hero-art .scene-viewport>img{transform:none!important}.scene-light,.scene-sun,.scene-dust,.scene-replay{display:none!important}}
+@media(max-width:700px){.storybook-scene{border-radius:64px 16px 16px 16px}.scene-viewport{aspect-ratio:1.75}}
+@media(prefers-reduced-motion:reduce){.storybook-scene,.hero-art .scene-viewport>img{transform:none!important}.scene-light,.scene-sun,.scene-dust{display:none!important}}
 /* Only replace the old tablet frame; all site layout and copy remain unchanged. */
 .hero-screen-wrap.hero-art{overflow:visible;animation:none;box-shadow:none;perspective:1100px}
 .hero-screen-wrap.hero-art>img{aspect-ratio:1.49;object-fit:cover;object-position:62% center;border-radius:130px 24px 24px 24px}
-.hero-art .scene-replay:focus-visible{outline:3px solid #ae421f;outline-offset:4px}
 @media(max-width:700px){.hero-screen-wrap.hero-art>img{aspect-ratio:1.75;border-radius:64px 16px 16px 16px}}
