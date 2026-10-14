@@ -1,4 +1,9 @@
+# Public pages are available to search engines and AI search crawlers.
 User-agent: *
+Allow: /
+
+# ChatGPT search discovery (independent of model-training controls).
+User-agent: OAI-SearchBot
 Allow: /
 
 Sitemap: https://crayonsmilegames.github.io/sitemap.xml

@@ -1247,3 +1247,27 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   .cta-buttons { flex-direction: column; align-items: stretch; }
   .cta-buttons .btn { width: 100%; }
 }
+
+
+/* Readable, static app information and parent FAQ. */
+.app-guide { padding: 56px 0; scroll-margin-top: 90px; }
+.app-guide h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-bottom: 20px; }
+.app-summary { max-width: 850px; line-height: 1.9; color: var(--text-primary); }
+.app-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 26px 0; }
+.app-facts > div { padding: 20px; background: var(--bg-card); border: 1px solid #e4d7c9; border-radius: var(--radius-md); }
+.app-facts dt { font-weight: 700; color: #573c28; margin-bottom: 8px; }
+.app-facts dd { line-height: 1.7; color: var(--text-primary); }
+.faq-section { background: var(--bg-section); }
+.faq-list { display: grid; gap: 12px; }
+.faq-list details { background: var(--bg-card); border: 1px solid #e4d7c9; border-radius: var(--radius-md); padding: 20px 24px; scroll-margin-top: 90px; }
+.faq-list summary { cursor: pointer; font-weight: 700; line-height: 1.7; color: var(--text-primary); }
+.faq-list summary:focus-visible { outline: 3px solid #8d4b15; outline-offset: 5px; border-radius: 4px; }
+.faq-list details p { padding-top: 14px; line-height: 1.9; color: var(--text-primary); }
+.guide-links, .guide-updated { margin-top: 22px; line-height: 1.8; overflow-wrap: anywhere; }
+.guide-links a { color: #87430e; text-decoration: underline; text-underline-offset: 3px; }
+.guide-updated { color: #634f40; font-size: 0.875rem; }
+@media (max-width: 640px) {
+  .app-facts { grid-template-columns: 1fr; }
+  .app-guide { padding: 36px 0; }
+  .faq-list details { padding: 18px; }
+}
