@@ -54,3 +54,14 @@ Official references checked for this update:
 - https://developers.openai.com/api/docs/bots
 
 Support: crayonsmile.games@gmail.com
+
+## Somi Coloring
+
+The separate Somi Coloring app is featured at `/#somi-coloring` and
+`/en/#somi-coloring`, with its own SoftwareApplication identifier and Google Play
+link. Keep it distinct from the coloring activity inside Somi Kids World.
+
+Public artwork in `assets/somi-coloring/` is copied unchanged from the Somi
+Coloring Google Play upload assets. Product text is based on its store listing
+and developer-provided store materials. Do not transfer Kids World content-pack,
+storybook or family-recording claims to this separate app.

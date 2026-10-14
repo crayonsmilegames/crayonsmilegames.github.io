@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://crayonsmilegames.github.io/'
 PLAY = 'https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld&pcampaignid=web_share'
+COLORING_PLAY = 'https://play.google.com/store/apps/details?id=com.crayonsmile.somicoloring&pcampaignid=web_share'
 
 class Document(HTMLParser):
     def __init__(self, source):
@@ -42,7 +43,7 @@ for path in ROOT.rglob('*.html'):
         absolute = urljoin(url, link)
         parsed = urlsplit(absolute)
         if parsed.hostname == 'play.google.com':
-            assert absolute == PLAY, (path, absolute)
+            assert absolute in {PLAY, COLORING_PLAY}, (path, absolute)
         if parsed.hostname != 'crayonsmilegames.github.io':
             continue
         target = ROOT / unquote(parsed.path.lstrip('/'))
@@ -59,11 +60,27 @@ for path in ROOT.rglob('*.html'):
         assert metadata['google-site-verification'] == 'YDlAggfaaH7thYKa-m15mn3zrxZNiwUIRVmhH_BvYEw'
         assert 'max-image-preview:large' in metadata['robots']
         schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)[1])
+        apps = {item['@id']: item for item in schema['@graph'] if item['@type'] == 'SoftwareApplication'}
         graph = {item['@type']: item for item in schema['@graph']}
         assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite', 'FAQPage'}
-        app = graph['SoftwareApplication']
+        assert set(apps) == {BASE + '#app', BASE + '#somi-coloring-app'}
+        app = apps[BASE + '#app']
         assert app['installUrl'] == PLAY and app['offers']['price'] == '0'
         assert 'aggregateRating' not in app and 'review' not in app
+        coloring = apps[BASE + '#somi-coloring-app']
+        assert coloring['installUrl'] == coloring['offers']['url'] == COLORING_PLAY
+        assert coloring['offers']['price'] == '0'
+        assert 'aggregateRating' not in coloring and 'review' not in coloring
+        assert coloring['url'] == url + '#somi-coloring'
+        from html import unescape
+        section = re.search(r'<section[^>]+id="somi-coloring".*?</section>', s, re.S)[0]
+        assert coloring['name'] in unescape(section)
+        assert coloring['description'] in unescape(section)
+        assert COLORING_PLAY in unescape(section)
+        for feature in coloring['featureList']:
+            assert feature in unescape(section)
+        for key in ['image']:
+            assert (ROOT / coloring[key].removeprefix(BASE)).is_file()
         faqs = graph['FAQPage']['mainEntity']
         assert len(faqs) == 6
         from html import unescape

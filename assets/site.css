@@ -1271,3 +1271,32 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.5rem); }
   .app-guide { padding: 36px 0; }
   .faq-list details { padding: 18px; }
 }
+
+/* Separate Somi Coloring app promotion. */
+.companion-app { background: #f4f0e5; }
+.companion-app > .container > .eyebrow { color: #6e461e; margin-bottom: 18px; }
+.companion-card { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #dfd4bf; border-radius: var(--radius-lg); overflow: hidden; background: #fffdf8; }
+.companion-art { display: flex; align-items: center; padding: 24px; background: #fff0cf; }
+.companion-art > img { display: block; width: 100%; height: auto; border-radius: var(--radius-md); }
+.companion-copy { padding: 32px; min-width: 0; word-break: keep-all; overflow-wrap: anywhere; }
+.companion-heading { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.companion-heading > img { width: 64px; height: 64px; flex: 0 0 64px; border-radius: 16px; }
+.companion-heading h2 { margin: 0 0 4px; }
+.companion-price { color: #355b2b; font-size: 0.9rem; font-weight: 700; }
+.companion-tagline { font-weight: 700; font-size: 1.1rem; line-height: 1.65; margin-bottom: 12px; }
+.companion-description, .companion-features, .companion-note { color: var(--text-primary); line-height: 1.8; }
+.companion-features { list-style: disc; padding-left: 20px; margin: 16px 0; }
+.companion-features li { margin-bottom: 6px; }
+.companion-note { font-size: 0.9rem; margin-bottom: 20px; }
+.companion-download { background: #31572e; color: #fff; white-space: normal; text-align: center; line-height: 1.5; }
+.companion-download:hover { background: #244421; color: #fff; }
+.companion-download:focus-visible { outline: 3px solid #87430e; outline-offset: 4px; }
+.en-content .companion-card { grid-template-columns: 1fr; }
+@media (max-width: 900px) { .companion-card { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .companion-art { padding: 14px; }
+  .companion-copy { padding: 22px; }
+  .companion-heading { gap: 12px; }
+  .companion-heading h2 { font-size: 1.5rem; }
+  .companion-download { width: 100%; }
+}
