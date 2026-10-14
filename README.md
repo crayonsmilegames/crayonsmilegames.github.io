@@ -17,7 +17,7 @@ python tools/validate_seo.py
 
 Preview `/` and `/en/` at desktop and mobile sizes. Check the app summary, FAQ
 keyboard/touch interaction and no-JavaScript readability. The validator checks
-all four public HTML pages, local links and fragments, canonical and reciprocal
+all six public HTML pages, local links and fragments, canonical and reciprocal
 language links, schema/FAQ text agreement, store links, sitemap coverage, crawler
 access and UTF-8/CRLF encoding. It does not certify indexing or search rankings.
 
@@ -65,3 +65,40 @@ Public artwork in `assets/somi-coloring/` is copied unchanged from the Somi
 Coloring Google Play upload assets. Product text is based on its store listing
 and developer-provided store materials. Do not transfer Kids World content-pack,
 storybook or family-recording claims to this separate app.
+
+## 30-second introduction
+
+`/intro/` and `/en/intro/` share a Korean-language, screenshot-based animated
+introduction. Kids World is the main subject; the separate Coloring app appears
+at the end. The animation is a promotional composition, not captured gameplay.
+The tailored production brief is `docs/intro-production-prompt.md`.
+
+The visitor player supports seeking, pause, sound and landscape/portrait views.
+Add `?studio=1` for effect comparisons. Sound requires a user action. The final
+three seconds hold still, and static descriptions and MP4 links work without JS.
+
+Build TypeScript and render from the repository root with a local server running:
+
+```sh
+npx --yes --package typescript tsc assets/intro/intro.ts --target ES2022 --module ES2022 --lib ES2022,DOM --strict
+node tools/render_intro.mjs --qa
+node tools/render_intro.mjs
+python tools/validate_seo.py
+```
+
+Rendering requires Playwright with Chromium and ffmpeg on PATH. Install these
+outside the published repository. `SOMI_PLAYWRIGHT_MODULE` may point to an existing
+Playwright module; `SOMI_PREVIEW_URL` overrides localhost:8765 and `SOMI_QA_OUTPUT`
+sets the QA output directory. Rendering creates two H.264/AAC MP4s, 30 seconds and
+900 frames each, at 1920x1080 and 1080x1920, plus poster images. QA checks repeatable
+seeks, the final hold, effect controls, loading errors and representative frames.
+
+Public screenshots and app artwork are reused from the official site assets.
+The soundtrack uses the project's `home_loop_suno.mp3` and `bubble_pop_01.mp3`,
+edited to 30 seconds with three click cues and fades. No narration is synthesized.
+`audio-analysis.json` holds precomputed 30-fps band and timing data so browser and
+export share the same timeline. `title-font.ttf` is NanumSquareRound ExtraBold;
+its license is included in `assets/intro/FONT-LICENSE.md`.
+
+After compiling or editing, keep text UTF-8 without BOM and CRLF. Update both
+localized pages, their VideoObject data and sitemap when publication changes.
