@@ -74,6 +74,8 @@ Support: crayonsmile.games@gmail.com
 
 The separate Somi Coloring app has its own product page and Google Play link.
 Keep it distinct from the coloring activity inside Somi Kids World.
+Kids World pages describe only their own app and built-in coloring activity;
+keep the separate Somi Coloring promotion and app schema on its own pages.
 
 Public artwork in `assets/somi-coloring/` is copied unchanged from the Somi
 Coloring Google Play upload assets. Product text is based on its store listing

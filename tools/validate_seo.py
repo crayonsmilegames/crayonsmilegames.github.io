@@ -74,16 +74,12 @@ for path in ROOT.rglob('*.html'):
                 assert app['offers']['price'] == '0'
         if '/games/somi-kids-world/' in url:
             assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite', 'FAQPage'}
-            assert set(apps) == {BASE + '#app', BASE + '#somi-coloring-app'}
+            assert set(apps) == {BASE + '#app'}
             assert apps[BASE + '#app']['installUrl'] == PLAY
-            coloring = apps[BASE + '#somi-coloring-app']
-            assert coloring['url'] == BASE + ('en/' if '/en/' in url else '') + 'games/somi-coloring/'
-            section = re.search(r'<section[^>]+id="somi-coloring".*?</section>', s, re.S)[0]
-            assert coloring['name'] in unescape(section)
-            assert coloring['description'] in unescape(section)
-            assert COLORING_PLAY in unescape(section)
-            for feature in coloring['featureList']:
-                assert feature in unescape(section)
+            assert 'somi-coloring' not in s, (path, 'separate coloring app promotion')
+            assert COLORING_PLAY not in unescape(s)
+            if '/en/' not in url:
+                assert any(a.get('id') == 'panel-coloring' for t, a in d.tags), (path, 'built-in coloring activity missing')
             faqs = graph['FAQPage']['mainEntity']
             assert len(faqs) == 6
             for item in faqs:
