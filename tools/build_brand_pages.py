@@ -2,6 +2,9 @@
 from html import escape
 from pathlib import Path
 import json
+import struct
+import re
+from privacy_content import APP_DATA, EFFECTIVE, SECTIONS
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://crayonsmilegames.github.io'
@@ -54,6 +57,17 @@ def url(slug='', en=False):
 def tr(ko, en, lang):
     return en if lang else ko
 
+def breadcrumbs(path, name, en):
+    return {'@type':'BreadcrumbList', '@id':BASE+path+'#breadcrumb', 'itemListElement':[
+        {'@type':'ListItem','position':1,'name':'CrayonSmile','item':BASE+url(en=en)},
+        {'@type':'ListItem','position':2,'name':name,'item':BASE+path}
+    ]}
+
+def image_size(asset):
+    raw=(ROOT/'assets'/asset).read_bytes()
+    assert raw[:8] == b'\x89PNG\r\n\x1a\n', asset
+    return struct.unpack('>II', raw[16:24])
+
 def status(p, en):
     return tr('출시 예정', 'Coming soon', en) if p['upcoming'] else tr('지금 플레이', 'Available now', en)
 
@@ -85,7 +99,7 @@ def head(title, desc, path, en, art, graph):
 <script type="application/ld+json">{json.dumps({'@context':'https://schema.org', '@graph':graph}, ensure_ascii=False, indent=2)}</script>
 </head><body>'''
 
-ORG = {'@type':'Organization', '@id':BASE+'/#organization', 'name':'CrayonSmile', 'alternateName':'크레용스마일', 'url':BASE+'/', 'logo':BASE+'/assets/crayonsmile-logo-transparent.png', 'email':EMAIL}
+ORG = {'@type':'Organization', '@id':BASE+'/#organization', 'name':'CrayonSmile', 'alternateName':'크레용스마일', 'url':BASE+'/', 'logo':BASE+'/assets/crayonsmile-logo-transparent.png', 'email':EMAIL, 'sameAs':['https://github.com/crayonsmilegames']}
 SITE = {'@type':'WebSite', '@id':BASE+'/#website', 'url':BASE+'/', 'name':'CrayonSmile', 'inLanguage':['ko','en'], 'publisher':{'@id':BASE+'/#organization'}}
 
 def home(en):
@@ -106,23 +120,25 @@ def product(p,en):
     name=p['name'][en]; path=url(p['slug'],en)
     title=name+' | CrayonSmile'+(' · '+status(p,en) if p['upcoming'] else '')
     app={'@type':'SoftwareApplication','@id':BASE+url(p['slug'])+'#app','name':name,'url':BASE+path,'description':p['desc'][en],'image':BASE+'/assets/'+p['art'],'operatingSystem':'Android','applicationCategory':'EducationalApplication','publisher':{'@id':BASE+'/#organization'}}
+    app.update(alternateName=p['name'][not en], inLanguage=['ko','en'] if p['slug']=='somi-flashcards' else ['ko'], featureList=[f[2 if en else 0] for f in p['features']])
     if not p['upcoming']:
         app.update(installUrl=p['store'],downloadUrl=p['store'],isAccessibleForFree=True,offers={'@type':'Offer','price':'0','priceCurrency':'KRW','url':p['store']})
-    graph=[ORG,SITE,app,{'@type':'WebPage','@id':BASE+path+'#webpage','url':BASE+path,'name':title,'inLanguage':'en' if en else 'ko','dateModified':'2026-10-28','isPartOf':{'@id':BASE+'/#website'},'about':{'@id':app['@id']}}]
+    graph=[ORG,SITE,app,breadcrumbs(path,name,en),{'@type':'WebPage','@id':BASE+path+'#webpage','url':BASE+path,'name':title,'description':p['desc'][en],'inLanguage':'en' if en else 'ko','dateModified':'2026-10-28','isPartOf':{'@id':BASE+'/#website'},'about':{'@id':app['@id']},'mainEntity':{'@id':app['@id']},'breadcrumb':{'@id':BASE+path+'#breadcrumb'}}]
     s=head(title,p['desc'][en],path,en,p['art'],graph)+header(en,p['slug'])
     s+=f'''<main id="main-content"><section class="product-hero {p['color']}"><div class="shell"><a class="back-link" href="{url(en=en)}#games">← {tr('모든 게임', 'All games', en)}</a><div class="product-top"><div class="product-copy"><div class="product-identity"><img src="/assets/{p['icon']}" width="72" height="72" alt=""><div><p class="eyebrow">CRAYONSMILE · {p['category'][en]}</p><span class="status {'soon' if p['upcoming'] else 'available'}">{status(p,en)}</span></div></div><h1>{name}</h1><p class="product-tagline">{p['headline'][en]}</p><p class="product-description">{p['desc'][en]}</p>'''
     if p['upcoming']:
         s+=f'''<div class="coming-notice"><strong>{tr('곧 만나요!', 'See you soon!', en)}</strong><p>{tr('출시를 준비하고 있어요. 다운로드 안내는 출시 후 이 페이지에 추가됩니다.', 'We’re getting ready for launch. Download details will be added here when the game is available.', en)}</p></div>'''
     else:
         s+=f'''<a class="button primary" href="{escape(p['store'],quote=True)}" target="_blank" rel="noopener noreferrer">{tr('Google Play에서 무료 다운로드', 'Get it free on Google Play', en)} <span aria-hidden="true">↗</span></a>'''
-    s+=f'''</div><figure class="product-art"><img src="/assets/{p['art']}" width="1024" height="500" alt="{name} {tr('공식 소개 이미지', 'official artwork', en)}" fetchpriority="high"></figure></div></div></section><section class="shell product-features" id="features"><p class="eyebrow">LITTLE WAYS TO PLAY</p><h2>{tr('이렇게 함께 놀아요', 'Little ways to learn and play', en)}</h2><div class="feature-grid">'''
+    s+=f'''</div><figure class="product-art"><img src="/assets/{p['art']}" width="1024" height="500" alt="{name} {tr('공식 소개 이미지', 'official artwork', en)}" fetchpriority="high"></figure></div><dl class="product-facts"><div><dt>{tr('개발사','Developer',en)}</dt><dd>CrayonSmile</dd></div><div><dt>{tr('지원 기기','Platform',en)}</dt><dd>Android</dd></div><div><dt>{tr('학습 언어','Learning language',en)}</dt><dd>{tr('한국어 · 영어','Korean · English',en) if p['slug']=='somi-flashcards' else tr('한국어','Korean',en)}</dd></div><div><dt>{tr('서비스 상태','Availability',en)}</dt><dd>{status(p,en)}</dd></div></dl></div></section><section class="shell product-features" id="features"><p class="eyebrow">LITTLE WAYS TO PLAY</p><h2>{tr('이렇게 함께 놀아요', 'Little ways to learn and play', en)}</h2><div class="feature-grid">'''
     for i,f in enumerate(p['features']):
         s+=f'<article><span class="feature-number">0{i+1}</span><h3>{f[2 if en else 0]}</h3><p>{f[3 if en else 1]}</p></article>'
     s+='</div></section>'
     if p.get('shots'):
         s+=f'''<section class="screens-section"><div class="shell"><p class="eyebrow">A PEEK INSIDE</p><h2>{tr('미리 만나는 놀이 시간', 'A peek at playtime', en)}</h2><p class="screens-note">{tr('개발 중인 화면으로, 출시 버전에서는 달라질 수 있습니다.', 'Screens shown are from development and may change before launch.', en)}</p><div class="screenshot-grid {'portrait' if p['slug']=='hangul-abc' else ''}">'''
         for file,caption in p['shots']:
-            s+=f'''<figure><img src="/assets/{p['slug']}/{file}" alt="{escape(caption[en])}" loading="lazy"><figcaption>{caption[en]}</figcaption></figure>'''
+            width,height=image_size(p['slug']+'/'+file)
+            s+=f'''<figure><img src="/assets/{p['slug']}/{file}" width="{width}" height="{height}" alt="{escape(caption[en])}" loading="lazy"><figcaption>{caption[en]}</figcaption></figure>'''
         s+='</div></div></section>'
     if p.get('note'):
         s+=f'''<aside class="shell purchase-note"><h2>{tr('보호자에게 전하는 이용 안내', 'A note for parents', en)}</h2><p>{p['note'][en]}</p></aside>'''
@@ -133,11 +149,62 @@ def product(p,en):
     s+='</div></section></main>'+footer(en)+'</body></html>'
     write(path.lstrip('/')+'index.html',s)
 
+def privacy(en):
+    path=('/en' if en else '')+'/privacy/'
+    title=tr('개인정보처리방침 | CrayonSmile','Privacy Policy | CrayonSmile',en)
+    desc=tr('크레용스마일 네 앱과 공식 웹사이트의 개인정보처리방침. 기기 내 학습·프로필·보호자 음성·사진 처리, 권한, 삭제와 문의 방법을 안내합니다.','Privacy practices for CrayonSmile’s four apps and website: local learning profiles, guardian recordings, photos, permissions, deletion and support.',en)
+    graph=[ORG,SITE,breadcrumbs(path,title,en),{'@type':'WebPage','@id':BASE+path+'#webpage','url':BASE+path,'name':title,'description':desc,'inLanguage':'en' if en else 'ko','dateModified':EFFECTIVE,'isPartOf':{'@id':BASE+'/#website'},'publisher':{'@id':BASE+'/#organization'},'breadcrumb':{'@id':BASE+path+'#breadcrumb'}}]
+    nav=header(en).replace(f'href="{url(en=not en)}" lang=',f'href="{("/en" if not en else "")}/privacy/" lang=')
+    s=head(title,desc,path,en,'crayonsmile-logo-transparent.png',graph)+nav
+    s+=f'''<main id="main-content" class="policy-wrap shell"><p class="eyebrow">PRIVACY &amp; FAMILY</p><h1>{tr('CrayonSmile 개인정보처리방침','CrayonSmile Privacy Policy',en)}</h1><p class="policy-date"><time datetime="{EFFECTIVE}">{tr('시행일: 2026년 10월 28일','Effective: October 28, 2026',en)}</time></p><div class="policy-summary"><strong>{tr('앱의 로컬 데이터와 웹사이트 방문을 구분해 안내합니다.','Local app data and website visits are explained separately.',en)}</strong><p>{tr('학습 프로필·보호자 녹음·사진을 앱이 CrayonSmile 서버로 업로드하지 않습니다. Google Play, 보호자 문의 이메일 및 웹사이트 호스팅의 처리는 아래에서 별도로 설명합니다.','The apps do not upload learning profiles, guardian recordings or photos to a CrayonSmile server. Google Play, guardian support email and website hosting are described separately below.',en)}</p></div><nav class="policy-toc" aria-label="{tr('방침 목차','Policy contents',en)}"><ol>'''
+    for id_,heading,paragraphs in SECTIONS:
+        s+=f'<li><a href="#{id_}">{heading[en]}</a></li>'
+    s+='</ol></nav>'
+    package_ids={'somi-kids-world':'com.crayonsmile.somikidsworld','hangul-abc':'com.crayonsmile.somiganada','somi-flashcards':'com.crayonsmile.somiflashcards','somi-coloring':'com.crayonsmile.somicoloring'}
+    for id_,heading,paragraphs in SECTIONS:
+        s+=f'<section class="policy-section" id="{id_}"><h2>{heading[en]}</h2>'
+        for paragraph in paragraphs: s+='<p>'+paragraph[en]+'</p>'
+        if id_=='local-data':
+            s+='<div class="policy-apps">'
+            for p in PRODUCTS:
+                s+=f'''<article class="policy-app" data-app="{p['slug']}"><h3><a href="{url(p['slug'],en)}">{p['name'][en]}</a></h3><p class="policy-package">{package_ids[p['slug']]}{(' · '+status(p,en)) if p['upcoming'] else ''}</p><p>{APP_DATA[p['slug']][en]}</p></article>'''
+            s+='</div>'
+        s+='</section>'
+    write(path.lstrip('/')+'index.html',s+'</main>'+footer(en)+'</body></html>')
+
+def refresh_legacy_metadata(en):
+    path=url('somi-kids-world',en)
+    file=ROOT/path.lstrip('/')/'index.html'
+    s=file.read_text(encoding='utf-8')
+    match=re.search(r'<script type="application/ld\+json">(.*?)</script>',s,re.S)
+    schema=json.loads(match[1])
+    graph=[node for node in schema['@graph'] if node['@type']!='BreadcrumbList']
+    name=PRODUCTS[0]['name'][en]
+    for node in graph:
+        if node['@type']=='WebPage':
+            node['mainEntity']={'@id':BASE+'/#app'}
+            node['breadcrumb']={'@id':BASE+path+'#breadcrumb'}
+    graph.append(breadcrumbs(path,name,en))
+    schema['@graph']=graph
+    s=s[:match.start(1)]+'\n'+json.dumps(schema,ensure_ascii=False,indent=2)+'\n'+s[match.end(1):]
+    def dimensions(m):
+        tag=m[0]
+        src=re.search(r'(?<![-\w])src="/assets/([^"]+)"',tag)
+        if not src or not src[1].endswith('.png'): return tag
+        width,height=image_size(src[1])
+        if not re.search(r'\bwidth=',tag):tag=tag[:-1]+f' width="{width}">'
+        if not re.search(r'\bheight=',tag):tag=tag[:-1]+f' height="{height}">'
+        return tag
+    s=re.sub(r'<img\b[^>]*>',dimensions,s)
+    write(path.lstrip('/')+'index.html',s)
+
 def main():
     for en in [False,True]:
+        refresh_legacy_metadata(en)
         home(en)
         for p in PRODUCTS:
             if p['slug'] != 'somi-kids-world': product(p,en)
-    print('Built 2 brand homepages and 6 product pages.')
+        privacy(en)
+    print('Built 2 brand homepages, 6 product pages and 2 privacy pages.')
 
 if __name__=='__main__': main()

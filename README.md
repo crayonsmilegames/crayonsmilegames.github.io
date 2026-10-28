@@ -14,6 +14,7 @@ Run from this repository:
 python -m http.server 8765 --bind 127.0.0.1
 python tools/build_brand_pages.py
 python tools/validate_seo.py
+python tools/audit_live_search.py
 ```
 
 Preview `/` and `/en/` and all four product routes at desktop and mobile sizes.
@@ -29,6 +30,10 @@ screenshots and interactions. The validator checks all 12 public HTML pages,
 local links and fragments, canonical and reciprocal language links, schema/FAQ
 text agreement, store links, launch-state claims, sitemap coverage, crawler
 access and UTF-8/CRLF encoding. It does not certify indexing or search rankings.
+The live audit must run after publishing: it compares the 12 served pages with
+local sources and checks HTTP indexing headers, the live sitemap/robots files,
+and access with Googlebot, Bingbot, Yeti, OAI-SearchBot and PerplexityBot headers.
+Header simulation does not prove actual crawler visits or account-side indexing.
 
 Hangul ABC and FlashCards are marked coming soon. Add a verified store URL and
 update the release state in the generator only when a product launches. Keep
@@ -91,3 +96,28 @@ FlashCards copy follows `export/store-listing/ko-KR/full-description.txt`, title
 The new artwork is copied unchanged from reviewed public store-listing assets.
 `tools/public-asset-provenance.json` records source paths and SHA256 hashes.
 Only public marketing artwork belongs here; never copy app source or private data.
+
+## Privacy policy maintenance
+
+`tools/privacy_content.py` is the bilingual policy source; the site generator
+builds `/privacy/` and `/en/privacy/` together. The policy effective date is
+2026-10-28. Keep the app list, local profile data, guardian narration, on-device
+camera/face landmarks, gallery storage, permissions, deletion and Google Play
+processing aligned with the actual app behavior. Website hosting/font requests
+and voluntary guardian support email are described separately from app-local data.
+
+Runtime sources checked for this revision: Kids World's `scripts/main.gd`,
+`scripts/audio_pack_manager.gd`, selfie bridge and privacy checklist; HangulABC's
+`scripts/profile_editor.gd` and `scripts/progress_store.gd`; FlashCards'
+`scripts/app_root.gd`; Coloring's canvas/app scripts; each app's export permissions
+and Android manifest. Kids World currently requests camera/microphone permissions
+after its first-launch introduction, as well as in feature flows when needed;
+the policy describes this observed behavior. App permission timing changes require
+separate runtime work and are not performed by the website generator.
+
+Search guidance reviewed: Google Search Central's generative AI optimization
+guide, OpenAI's crawler documentation and Naver Search Advisor's content-markup
+guide. Existing normal SEO, crawlable factual text, language/canonical links and
+consistent structured data are the foundation; no AI-specific file guarantees
+indexing or inclusion in answers. Privacy references: Google Play User Data policy,
+Google Privacy Policy and GitHub Pages/Privacy documentation.
