@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://crayonsmilegames.github.io/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <loc>https://crayonsmilegames.github.io/en/games/hangul-abc/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/en/games/somi-coloring/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/en/games/somi-flashcards/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/en/games/somi-kids-world/</loc>
+    <lastmod>2026-10-28</lastmod>
   </url>
   <url>
     <loc>https://crayonsmilegames.github.io/en/</loc>
-    <lastmod>2026-10-15</lastmod>
-  </url>
-  <url>
-    <loc>https://crayonsmilegames.github.io/privacy/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-28</lastmod>
   </url>
   <url>
     <loc>https://crayonsmilegames.github.io/en/privacy/</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/games/hangul-abc/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/games/somi-coloring/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/games/somi-flashcards/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/games/somi-kids-world/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/</loc>
+    <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://crayonsmilegames.github.io/privacy/</loc>
+    <lastmod>2026-10-28</lastmod>
   </url>
 </urlset>

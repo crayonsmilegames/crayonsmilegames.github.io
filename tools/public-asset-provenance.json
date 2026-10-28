@@ -1,0 +1,62 @@
+[
+  {
+    "asset": "assets/hangul-abc/app-icon.png",
+    "source": "I:/HangulABC/art_sources/store-listing-2026-10-16/final/app-icon-ganada-512.png",
+    "sha256": "39e94c1b7e52314e29139662313070af271e5e4f7c427750a0870d82fa280a02"
+  },
+  {
+    "asset": "assets/hangul-abc/feature-graphic.png",
+    "source": "I:/HangulABC/art_sources/store-listing-2026-10-16/final/feature-1024x500.png",
+    "sha256": "1e53ed697e74d72141282fad920b8f0ecfada52c92a2ce0dc1da060157353e77"
+  },
+  {
+    "asset": "assets/hangul-abc/name.png",
+    "source": "I:/HangulABC/art_sources/store-listing-2026-10-16/final/phone-02-name.png",
+    "sha256": "c8c6e3abca0f753b7c6a40b78dfdb60ec068bb09dcdd995752d2f0103c67ec72"
+  },
+  {
+    "asset": "assets/hangul-abc/trace.png",
+    "source": "I:/HangulABC/art_sources/store-listing-2026-10-16/final/phone-03-trace.png",
+    "sha256": "8c46315690f67abff0bc8d0884c2c2c637f346970bac90ebd7432823f91223df"
+  },
+  {
+    "asset": "assets/hangul-abc/assemble.png",
+    "source": "I:/HangulABC/art_sources/store-listing-2026-10-16/final/phone-04-assemble.png",
+    "sha256": "1da88d8ff305e0ad1d7d130f63bd4adc184f04a5af0ff3d96f8c84a503342604"
+  },
+  {
+    "asset": "assets/hangul-abc/story.png",
+    "source": "I:/HangulABC/art_sources/store-listing-2026-10-16/final/phone-05-story.png",
+    "sha256": "f923c8aef1edc976b820e8398f8b6aaf4e60a1d291d52c4f97425c3d5118fd0a"
+  },
+  {
+    "asset": "assets/somi-flashcards/app-icon.png",
+    "source": "I:/01_SomiFlashCards/export/store-listing/ko-KR/app-icon-512x512.png",
+    "sha256": "540e67d6d357340474ca2f550e7bfd00c658481e0f9a55cefc459cdcbe171ba6"
+  },
+  {
+    "asset": "assets/somi-flashcards/feature-graphic.png",
+    "source": "I:/01_SomiFlashCards/export/store-listing/ko-KR/feature-graphic-1024x500.png",
+    "sha256": "020d9df9d2d7cdb897ca8fb81c8ed12109ddc02a46cb634739cecc9c3eda0010"
+  },
+  {
+    "asset": "assets/somi-flashcards/korean.png",
+    "source": "I:/01_SomiFlashCards/export/store-listing/ko-KR/phone/01-korean-words.png",
+    "sha256": "0571209b6cf9710a273ced6a23d897bf070b0a125a699a6ad1a62ef3e5b6ac2b"
+  },
+  {
+    "asset": "assets/somi-flashcards/english.png",
+    "source": "I:/01_SomiFlashCards/export/store-listing/ko-KR/phone/02-english-words.png",
+    "sha256": "92b6a7b5f7c68b8d62878d6150ee2c0947023218cd2b590f18efc22c7af31fb9"
+  },
+  {
+    "asset": "assets/somi-flashcards/village.png",
+    "source": "I:/01_SomiFlashCards/export/store-listing/ko-KR/phone/03-growing-village.png",
+    "sha256": "35699fc0139d71c6fc1550f08166c8897f333eacebd039aa3cf8a7bcb543d995"
+  },
+  {
+    "asset": "assets/somi-flashcards/library.png",
+    "source": "I:/01_SomiFlashCards/export/store-listing/ko-KR/phone/04-card-library.png",
+    "sha256": "1577aa48a594b0ebe3e0527b520badc458bf60d955de99783af3bf3627e68934"
+  }
+]

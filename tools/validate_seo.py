@@ -37,7 +37,7 @@ for path in ROOT.rglob('*.html'):
     alternates = {a['hreflang']: a['href'] for t, a in d.tags if t == 'link' and 'hreflang' in a}
     assert set(alternates) == {'ko', 'en', 'x-default'}, path
     for t, a in d.tags:
-        link = a.get('href') or a.get('src')
+        link = a.get('href') or a.get('src') or a.get('data-img')
         if not link or link.startswith(('mailto:', 'data:')):
             continue
         absolute = urljoin(url, link)
@@ -62,34 +62,55 @@ for path in ROOT.rglob('*.html'):
         schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', s, re.S)[1])
         apps = {item['@id']: item for item in schema['@graph'] if item['@type'] == 'SoftwareApplication'}
         graph = {item['@type']: item for item in schema['@graph']}
-        assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite', 'FAQPage'}
-        assert set(apps) == {BASE + '#app', BASE + '#somi-coloring-app'}
-        app = apps[BASE + '#app']
-        assert app['installUrl'] == PLAY and app['offers']['price'] == '0'
-        assert 'aggregateRating' not in app and 'review' not in app
-        coloring = apps[BASE + '#somi-coloring-app']
-        assert coloring['installUrl'] == coloring['offers']['url'] == COLORING_PLAY
-        assert coloring['offers']['price'] == '0'
-        assert 'aggregateRating' not in coloring and 'review' not in coloring
-        assert coloring['url'] == url + '#somi-coloring'
         from html import unescape
-        section = re.search(r'<section[^>]+id="somi-coloring".*?</section>', s, re.S)[0]
-        assert coloring['name'] in unescape(section)
-        assert coloring['description'] in unescape(section)
-        assert COLORING_PLAY in unescape(section)
-        for feature in coloring['featureList']:
-            assert feature in unescape(section)
-        for key in ['image']:
-            assert (ROOT / coloring[key].removeprefix(BASE)).is_file()
-        faqs = graph['FAQPage']['mainEntity']
-        assert len(faqs) == 6
-        from html import unescape
-        for item in faqs:
-            id_ = item['@id'].split('#')[1]
-            detail = re.search(r'<details id="' + id_ + r'">(.*?)</details>', s, re.S)[1]
-            q = unescape(re.search(r'<summary>(.*?)</summary>', detail, re.S)[1])
-            a = unescape(re.search(r'<p>(.*?)</p>', detail, re.S)[1])
-            assert q == item['name'] and a == item['acceptedAnswer']['text'], id_
+        assert {'Organization', 'WebSite'} <= set(graph), path
+        assert graph['WebSite']['name'] == 'CrayonSmile'
+        for app in apps.values():
+            assert 'aggregateRating' not in app and 'review' not in app
+            assert (ROOT / app['image'].removeprefix(BASE)).is_file()
+            if app.get('installUrl'):
+                assert app['installUrl'] in {PLAY, COLORING_PLAY}
+                assert app['offers']['url'] == app['installUrl']
+                assert app['offers']['price'] == '0'
+        if '/games/somi-kids-world/' in url:
+            assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite', 'FAQPage'}
+            assert set(apps) == {BASE + '#app', BASE + '#somi-coloring-app'}
+            assert apps[BASE + '#app']['installUrl'] == PLAY
+            coloring = apps[BASE + '#somi-coloring-app']
+            assert coloring['url'] == BASE + ('en/' if '/en/' in url else '') + 'games/somi-coloring/'
+            section = re.search(r'<section[^>]+id="somi-coloring".*?</section>', s, re.S)[0]
+            assert coloring['name'] in unescape(section)
+            assert coloring['description'] in unescape(section)
+            assert COLORING_PLAY in unescape(section)
+            for feature in coloring['featureList']:
+                assert feature in unescape(section)
+            faqs = graph['FAQPage']['mainEntity']
+            assert len(faqs) == 6
+            for item in faqs:
+                id_ = item['@id'].split('#')[1]
+                detail = re.search(r'<details id="' + id_ + r'">(.*?)</details>', s, re.S)[1]
+                q = unescape(re.search(r'<summary>(.*?)</summary>', detail, re.S)[1])
+                a = unescape(re.search(r'<p>(.*?)</p>', detail, re.S)[1])
+                assert q == item['name'] and a == item['acceptedAnswer']['text'], id_
+        elif '/games/' in url:
+            assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite'}
+            assert len(apps) == 1
+            app = next(iter(apps.values()))
+            assert app['url'] == url
+            assert app['name'] in unescape(s)
+            if '/hangul-abc/' in url or '/somi-flashcards/' in url:
+                assert not any(k in app for k in ['installUrl', 'downloadUrl', 'offers', 'releaseDate'])
+                assert not any(urlsplit(a.get('href', '')).hostname == 'play.google.com' for t, a in d.tags)
+                assert 'Coming soon' in s if '/en/' in url else '출시 예정' in s
+                assert 'coming-notice' in s
+        else:
+            assert set(graph) == {'Organization', 'WebSite', 'CollectionPage'}
+            entries = graph['CollectionPage']['mainEntity']['itemListElement']
+            assert len(entries) == 4
+            assert len(set(item['url'] for item in entries)) == 4
+            for item in entries:
+                assert item['name'] in unescape(s)
+                assert item['url'].removeprefix(BASE.rstrip('/')) in s
         assert sum(t == 'main' for t, a in d.tags) == 1
     print('PASS', path.relative_to(ROOT), 'metadata, links, encoding, schema/content parity')
 
