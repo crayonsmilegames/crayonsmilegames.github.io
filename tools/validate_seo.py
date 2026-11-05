@@ -69,7 +69,14 @@ for path in ROOT.rglob('*.html'):
     from html import unescape
     assert {'Organization', 'WebSite'} <= set(graph), path
     assert graph['WebSite']['name'] == 'CrayonSmile'
+    assert graph['WebSite']['alternateName'] == '\ud06c\ub808\uc6a9\uc2a4\ub9c8\uc77c'
+    assert graph['WebSite']['url'] == BASE
+    assert metadata['og:site_name'] == 'CrayonSmile', path
     for app in apps.values():
+        assert app['url'] == url, (path, 'app must use its dedicated page')
+        assert app['@id'] == url.replace('/en/', '/') + '#app', path
+        assert graph['WebPage']['mainEntity']['@id'] == app['@id'], path
+        assert graph['WebPage']['about']['@id'] == app['@id'], path
         assert 'aggregateRating' not in app and 'review' not in app
         assert (ROOT / app['image'].removeprefix(BASE)).is_file()
         if app.get('installUrl'):
@@ -104,8 +111,9 @@ for path in ROOT.rglob('*.html'):
         assert ('/en/privacy/' if '/en/' not in url else '/privacy/') in [a.get('href') for t, a in d.tags if t == 'a' and a.get('lang')]
     elif '/games/somi-kids-world/' in url:
         assert set(graph) == {'SoftwareApplication', 'Organization', 'WebPage', 'WebSite', 'FAQPage', 'BreadcrumbList'}
-        assert set(apps) == {BASE + '#app'}
-        assert apps[BASE + '#app']['installUrl'] == PLAY
+        assert set(apps) == {BASE + 'games/somi-kids-world/#app'}
+        assert apps[BASE + 'games/somi-kids-world/#app']['installUrl'] == PLAY
+        assert next(a['href'] for t, a in d.tags if t == 'a' and a.get('class') == 'nav-brand') == urlsplit(url).path
         assert 'somi-coloring' not in s, (path, 'separate coloring app promotion')
         assert COLORING_PLAY not in unescape(s)
         if '/en/' not in url:

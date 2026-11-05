@@ -100,7 +100,7 @@ def head(title, desc, path, en, art, graph):
 </head><body>'''
 
 ORG = {'@type':'Organization', '@id':BASE+'/#organization', 'name':'CrayonSmile', 'alternateName':'크레용스마일', 'url':BASE+'/', 'logo':BASE+'/assets/crayonsmile-logo-transparent.png', 'email':EMAIL, 'sameAs':['https://github.com/crayonsmilegames']}
-SITE = {'@type':'WebSite', '@id':BASE+'/#website', 'url':BASE+'/', 'name':'CrayonSmile', 'inLanguage':['ko','en'], 'publisher':{'@id':BASE+'/#organization'}}
+SITE = {'@type':'WebSite', '@id':BASE+'/#website', 'url':BASE+'/', 'name':'CrayonSmile', 'alternateName':'크레용스마일', 'inLanguage':['ko','en'], 'publisher':{'@id':BASE+'/#organization'}}
 
 def home(en):
     title = tr('크레용스마일 | 놀이로 만나는 작은 배움', 'CrayonSmile | Little moments. Growing smiles.', en)
@@ -179,14 +179,24 @@ def refresh_legacy_metadata(en):
     match=re.search(r'<script type="application/ld\+json">(.*?)</script>',s,re.S)
     schema=json.loads(match[1])
     graph=[node for node in schema['@graph'] if node['@type']!='BreadcrumbList']
+    app_id=BASE+url('somi-kids-world')+'#app'
     name=PRODUCTS[0]['name'][en]
     for node in graph:
+        if node['@type']=='WebSite':
+            node.update(SITE)
+        if node['@type']=='SoftwareApplication':
+            node['@id']=app_id
         if node['@type']=='WebPage':
-            node['mainEntity']={'@id':BASE+'/#app'}
+            node['mainEntity']={'@id':app_id}
+            node['about']={'@id':app_id}
+            node['dateModified']='2026-11-05'
             node['breadcrumb']={'@id':BASE+path+'#breadcrumb'}
     graph.append(breadcrumbs(path,name,en))
     schema['@graph']=graph
     s=s[:match.start(1)]+'\n'+json.dumps(schema,ensure_ascii=False,indent=2)+'\n'+s[match.end(1):]
+    s=re.sub(r'(<meta property="og:site_name" content=")[^"]*(">)', r'\g<1>CrayonSmile\2', s)
+    # The app logo returns to the app page; the studio-return link opens the hub.
+    s=re.sub(r'(<a class="nav-brand" href=")[^"]*(")', lambda m: m[1]+path+m[2], s)
     def dimensions(m):
         tag=m[0]
         src=re.search(r'(?<![-\w])src="/assets/([^"]+)"',tag)
