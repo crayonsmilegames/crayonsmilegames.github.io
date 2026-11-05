@@ -26,11 +26,11 @@ same. Legacy Kids World feature/FAQ hashes redirect to its detailed product page
 
 `tools/build_brand_pages.py` holds the bilingual studio and new product copy.
 The existing Kids World pages are preserved separately, including their FAQ,
-screenshots and interactions. The validator checks all 12 public HTML pages,
+screenshots and interactions. The validator checks all 20 public HTML pages,
 local links and fragments, canonical and reciprocal language links, schema/FAQ
 text agreement, store links, launch-state claims, sitemap coverage, crawler
 access and UTF-8/CRLF encoding. It does not certify indexing or search rankings.
-The live audit must run after publishing: it compares the 12 served pages with
+The live audit must run after publishing: it compares the 20 served pages with
 local sources and checks HTTP indexing headers, the live sitemap/robots files,
 and access with Googlebot, Bingbot, Yeti, OAI-SearchBot and PerplexityBot headers.
 Header simulation does not prove actual crawler visits or account-side indexing.
@@ -74,6 +74,29 @@ SEO reference links:
 - https://developers.openai.com/api/docs/bots
 
 Support: crayonsmile.games@gmail.com
+
+## Per-app Terms of Service
+
+Each product links to its own `/games/<slug>/terms/` page and an English
+equivalent under `/en/games/<slug>/terms/`. Use the corresponding Korean URL
+in that app's Play Console Terms of Service field. All eight pages are public,
+without sign-in, and are discoverable from the homepages and product pages.
+
+`tools/terms_content.py` holds shared bilingual clauses and app-specific scope,
+pricing state and local-feature guidance. `tools/build_terms_pages.py` renders
+the pages, inserts idempotent footer links and updates sitemap coverage; the
+normal `tools/build_brand_pages.py` command runs it automatically. Run the
+SEO validator after rebuilding. It checks all eight pages against their source
+clauses as well as language links, local links, metadata and encoding.
+
+Version 1.0 is effective November 5, 2026. The owner confirmed the public brand
+and support email, free installation, no ads or subscriptions, and guardian-only
+one-time purchases where paid content exists. Coloring's current release has
+no IAP. Hangul ABC and FlashCards remain coming soon, and their pages distinguish
+planned purchases from live sales. Keep published versions of terms in Git;
+announce material changes and update effective/version metadata when revising
+the actual agreement. Store/checkout seller disclosures remain separate from
+these service terms; no private business identifiers are stored here.
 
 ## Public product artwork and factual sources
 

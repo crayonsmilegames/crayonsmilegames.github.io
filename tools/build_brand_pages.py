@@ -205,6 +205,8 @@ def main():
         for p in PRODUCTS:
             if p['slug'] != 'somi-kids-world': product(p,en)
         privacy(en)
+    from build_terms_pages import build
+    build()
     print('Built 2 brand homepages, 6 product pages and 2 privacy pages.')
 
 if __name__=='__main__': main()

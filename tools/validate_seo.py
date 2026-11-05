@@ -6,6 +6,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from privacy_content import EFFECTIVE, SECTIONS
+import terms_content
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://crayonsmilegames.github.io/'
@@ -80,7 +81,21 @@ for path in ROOT.rglob('*.html'):
         assert [item['position'] for item in trail] == [1, 2]
         assert trail[-1]['item'] == url
         assert graph['WebPage']['breadcrumb']['@id'] == graph['BreadcrumbList']['@id']
-    if '/privacy/' in url:
+    if '/terms/' in url:
+        assert set(graph) == {'Organization', 'WebSite', 'WebPage', 'BreadcrumbList'}
+        slug = url.split('/games/')[1].split('/')[0]
+        assert graph['WebPage']['dateModified'] == terms_content.EFFECTIVE
+        assert graph['WebPage']['version'] == terms_content.VERSION
+        assert terms_content.PACKAGES[slug] in s
+        assert {key for key, _, _ in terms_content.sections(slug)} <= set(ids)
+        assert any(t == 'main' and a.get('data-terms-app') == slug for t, a in d.tags)
+        assert any(t == 'time' and a.get('datetime') == terms_content.EFFECTIVE for t, a in d.tags)
+        language = '/en/' in url
+        for key, heading, paragraphs in terms_content.sections(slug):
+            section = re.search(r'<section class="policy-section" id="' + key + r'">(.*?)</section>', s, re.S)[1]
+            assert f'<h2>{heading[language]}</h2>' in section
+            assert re.findall(r'<p>(.*?)</p>', section, re.S) == [pair[language] for pair in paragraphs]
+    elif '/privacy/' in url:
         assert set(graph) == {'Organization', 'WebSite', 'WebPage', 'BreadcrumbList'}
         assert graph['WebPage']['dateModified'] == EFFECTIVE
         assert len([1 for t, a in d.tags if t == 'article' and 'data-app' in a]) == 4
@@ -127,6 +142,7 @@ for path in ROOT.rglob('*.html'):
     assert sum(t == 'main' for t, a in d.tags) == 1
     print('PASS', path.relative_to(ROOT), 'metadata, links, encoding, schema/content parity')
 
+assert len([url for url in pages if '/terms/' in url]) == 8
 for url, (path, s, d) in pages.items():
     alts = {a['hreflang']: a['href'] for t, a in d.tags if t == 'link' and 'hreflang' in a}
     for alternate in alts.values():
