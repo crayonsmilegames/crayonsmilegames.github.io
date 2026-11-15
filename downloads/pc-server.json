@@ -1,0 +1,17 @@
+{
+  "name": "SHARP PC Server",
+  "version": "1.1.0",
+  "file": "SHARP-PC-Server-1.1.0-win64.zip",
+  "size": 6395215,
+  "sha256": "8c58ae582af22e15d8ea6aeb287b8ca49e94780a5638243e1da54d27b4e77bae",
+  "python": "3.12.10",
+  "builtAt": "2026-11-15T01:46:49Z",
+  "source": "85599d6",
+  "installer": "SHARP-PC-Server-1.1.0-Setup.exe",
+  "installerSize": 6891213,
+  "installerSha256": "29e342683b119622d90772f94f343768d8c6e5d0e448f5960c2d43dca95295f2",
+  "tag": "pc-server-v1.1.0",
+  "url": "https://github.com/crayonsmilegames/crayonsmilegames.github.io/releases/download/pc-server-v1.1.0/SHARP-PC-Server-1.1.0-win64.zip",
+  "installerUrl": "https://github.com/crayonsmilegames/crayonsmilegames.github.io/releases/download/pc-server-v1.1.0/SHARP-PC-Server-1.1.0-Setup.exe",
+  "releasePage": "https://github.com/crayonsmilegames/crayonsmilegames.github.io/releases/tag/pc-server-v1.1.0"
+}
