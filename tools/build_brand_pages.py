@@ -45,8 +45,15 @@ PRODUCTS = [
          icon='somi-coloring/app-icon.png', art='somi-coloring/feature-graphic.png',
          store='https://play.google.com/store/apps/details?id=com.crayonsmile.somicoloring&pcampaignid=web_share',
          features=[['친근한 그림으로 시작해요', '한글 자음부터 동물과 가족, 일상 그림까지. 오늘 색칠하고 싶은 도안을 골라보세요.', 'Familiar pictures to start with', 'Choose a picture to color, from Korean consonants to animals, family and everyday scenes.'],
-                   ['손끝에서 달라지는 색칠', '마커, 크레용, 붓, 반짝이 젤로 저마다 다른 느낌을 표현해요.', 'Different brushes, different discoveries', 'Try markers, crayons, brushes and glitter gel to give each picture its own character.'],
-                   ['선 안에서, 내 마음대로', '경계선 안에서 칠하는 선 지키기 기능으로 색칠을 도와줘요. 소미 키즈월드와 별도로 설치하는 색칠 전용 앱입니다.', 'A helping hand for little artists', 'Stay-within-the-lines coloring helps little hands. Somi Coloring is a separate app from the coloring activity in Somi Kids World.']])
+                   ['도구와 색을 바꿔 봐요', '마커로 선명하게, 크레용으로 포근하게 칠해요. 붓이나 반짝이 젤도 써 보고, 색을 바꾸고 싶을 땐 지우개로 지워요.', 'Try different tools and colors', 'Make bold marks with a marker or soft textures with a crayon. Try the brush and glitter gel, and use the eraser to try a different color.'],
+                   ['선 안에서, 내 마음대로', '경계선 안에서 칠하는 선 지키기 기능으로 색칠을 도와줘요. 소미 키즈월드와 별도로 설치하는 색칠 전용 앱입니다.', 'A helping hand for little artists', 'Stay-within-the-lines coloring helps little hands. Somi Coloring is a separate app from the coloring activity in Somi Kids World.']],
+         shots_intro=['소미 색칠놀이의 실제 화면을 따라 도안 고르기부터 색칠까지 살펴보세요.', 'See how Somi Coloring looks in play, from choosing a picture to adding color.'],
+         shots=[('play-somi.png', ['소미 그림에 색칠하기', 'Color a picture of Somi'],
+                 ['왼쪽에서 도구를 고르고 오른쪽에서 원하는 색을 골라 도안에 칠해요.', 'Choose a tool on the left and a color on the right, then start coloring.']),
+                ('play-shelf.png', ['책장에서 도안 고르기', 'Choose a picture from the shelf'],
+                 ['가나다라와 처음 색칠 탭을 넘겨 보고, 마음에 드는 도안을 눌러 펼쳐요.', 'Switch between the Hangul and beginner coloring tabs, then tap a picture to open it.']),
+                ('play-bath.png', ['일상 도안도 색칠하기', 'Color an everyday scene'],
+                 ['오리와 비눗방울이 있는 목욕 그림도 색칠할 수 있어요. 화면 위의 선 지키기를 켜면 경계 안에서 칠할 수 있어요.', 'Color a bath-time picture with a duck and bubbles. Turn on stay-within-the-lines mode at the top to keep color inside the outlines.'])])
 ]
 
 def write(path, text):
@@ -150,10 +157,18 @@ def product(p,en):
         s+=f'<article><span class="feature-number">0{i+1}</span><h3>{f[2 if en else 0]}</h3><p>{f[3 if en else 1]}</p></article>'
     s+='</div></section>'
     if p.get('shots'):
-        s+=f'''<section class="screens-section"><div class="shell"><p class="eyebrow">A PEEK INSIDE</p><h2>{tr('미리 만나는 놀이 시간', 'A peek at playtime', en)}</h2><div class="screenshot-grid {'portrait' if p['slug']=='hangul-abc' else ''}">'''
-        for file,caption in p['shots']:
+        s+=f'''<section class="screens-section"><div class="shell"><p class="eyebrow">A PEEK INSIDE</p><h2>{tr('미리 만나는 놀이 시간', 'A peek at playtime', en)}</h2>'''
+        if p.get('shots_intro'):
+            s += f'<p class="screens-note">{escape(p["shots_intro"][en])}</p>'
+        gallery_class = {'hangul-abc': 'portrait', 'somi-coloring': 'coloring-gallery'}.get(p['slug'], '')
+        s += f'<div class="screenshot-grid {gallery_class}">'
+        for file, caption, *details in p['shots']:
             width,height=image_size(p['slug']+'/'+file)
-            s+=f'''<figure><img src="/assets/{p['slug']}/{file}" width="{width}" height="{height}" alt="{escape(caption[en])}" loading="lazy"><figcaption>{caption[en]}</figcaption></figure>'''
+            label = escape(caption[en])
+            caption_html = label
+            if details:
+                caption_html = f'<strong>{label}</strong><p>{escape(details[0][en])}</p>'
+            s+=f'''<figure><img src="/assets/{p['slug']}/{file}" width="{width}" height="{height}" alt="{label}" loading="lazy"><figcaption>{caption_html}</figcaption></figure>'''
         s+='</div></div></section>'
     if p.get('note'):
         s+=f'''<aside class="shell purchase-note"><h2>{tr('보호자에게 전하는 이용 안내', 'A note for parents', en)}</h2><p>{p['note'][en]}</p></aside>'''
