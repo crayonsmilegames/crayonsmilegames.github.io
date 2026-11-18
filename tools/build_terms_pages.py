@@ -15,7 +15,7 @@ def terms(p, en):
     graph = [brand.ORG, brand.SITE, brand.breadcrumbs(path, title, en), {
         '@type': 'WebPage', '@id': brand.BASE + path + '#webpage', 'url': brand.BASE + path,
         'name': title, 'description': desc, 'inLanguage': 'en' if en else 'ko',
-        'dateModified': EFFECTIVE, 'version': VERSION, 'isPartOf': {'@id': brand.BASE + '/#website'},
+        'dateModified': brand.launch_page_modified(path, EFFECTIVE), 'version': VERSION, 'isPartOf': {'@id': brand.BASE + '/#website'},
         'publisher': {'@id': brand.BASE + '/#organization'},
         'breadcrumb': {'@id': brand.BASE + path + '#breadcrumb'},
     }]
@@ -64,8 +64,9 @@ def build():
     root = ET.Element('{' + ns + '}urlset')
     for file in sorted(brand.ROOT.rglob('*.html')):
         node = ET.SubElement(root, '{' + ns + '}url')
-        ET.SubElement(node, '{' + ns + '}loc').text = brand.BASE + '/' + file.relative_to(brand.ROOT).as_posix().removesuffix('index.html')
-        ET.SubElement(node, '{' + ns + '}lastmod').text = EFFECTIVE
+        path = '/' + file.relative_to(brand.ROOT).as_posix().removesuffix('index.html')
+        ET.SubElement(node, '{' + ns + '}loc').text = brand.BASE + path
+        ET.SubElement(node, '{' + ns + '}lastmod').text = brand.launch_page_modified(path, EFFECTIVE)
     ET.indent(root, space='  ')
     brand.write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding='unicode'))
     print('Built 8 app-specific terms pages and linked all 20 public pages.')

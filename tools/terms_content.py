@@ -48,11 +48,11 @@ APP = {
     },
     'hangul-abc': {
         'service': [
-            ['내 이름 글자 놀이, 한글 소리 듣기·따라 쓰기·글자 조립, 낱말 활동과 그림 이야기, 프로필별 학습·복습 기록을 제공합니다. 현재 출시 준비 중이며 정식 출시일과 최종 제공 범위는 공식 소개 및 앱의 안내로 공지합니다.',
-             'The app provides name-based letter play, Korean sound listening, tracing and syllable building, word activities, illustrated stories, and per-profile learning and review records. It is being prepared for launch; the release date and final scope will be announced on the official product page and in the app.'],
+            ['내 이름 글자 놀이, 한글 소리 듣기·따라 쓰기·글자 조립, 낱말 활동과 그림 이야기, 프로필별 학습·복습 기록을 제공합니다.',
+             'The app provides name-based letter play, Korean sound listening, tracing and syllable building, word activities, illustrated stories, and per-profile learning and review records.'],
         ],
-        'price': ['기본 설치와 일부 체험 콘텐츠는 무료로 제공하고, 추가 학습 콘텐츠는 보호자 영역의 일회성 전체 이용권으로 제공할 계획입니다. 현재 실제 결제와 구매 복원은 준비 중이며 가격과 확정 상품 범위는 판매 개시 전에 표시합니다. 전체 이용권이라는 명칭만으로 향후 모든 별도 상품이 포함되는 것은 아니며, 포함 범위는 구매 시 상품 설명에 따릅니다.',
-                  'Installation and selected trial content are planned to be free, with additional learning content offered through a one-time full-access purchase in the guardian area. Billing and purchase restoration are still being prepared; the price and confirmed product scope will be displayed before sales begin. The name “full access” does not by itself include every future separate product; the purchase description defines what is included.'],
+        'price': ['기본 설치는 무료입니다. 일부 체험 콘텐츠는 무료로 제공할 수 있으며, 추가 학습 콘텐츠는 보호자 영역의 일회성 전체 이용권으로 제공할 계획입니다. 현재 실제 결제와 구매 복원은 준비 중이며 가격과 확정 상품 범위는 판매 개시 전에 표시합니다. 전체 이용권이라는 명칭만으로 향후 모든 별도 상품이 포함되는 것은 아니며, 포함 범위는 구매 시 상품 설명에 따릅니다.',
+                  'Installation is free. Selected trial content may be free, and additional learning content is planned through a one-time full-access purchase in the guardian area. Billing and purchase restoration are still being prepared; the price and confirmed product scope will be displayed before sales begin. The name “full access” does not by itself include every future separate product; the purchase description defines what is included.'],
         'specific': [
             ['이름 또는 별명, 나이, 아바타와 학습 기록은 기기 내 프로필에 사용합니다. 실명 대신 별명을 사용할 수 있습니다. 이 프로필은 온라인 회원 계정이 아니며 다른 기기에 자동 동기화되지 않습니다. 현재 카메라와 마이크를 사용하는 기능은 없습니다.',
              'A name or nickname, age, avatar and learning records are used for local profiles. A nickname may be used instead of a real name. Profiles are not online user accounts and are not automatically synchronized to other devices. There are currently no camera or microphone features.'],
@@ -60,11 +60,11 @@ APP = {
     },
     'somi-flashcards': {
         'service': [
-            ['한글·영어 그림 낱말카드, 소리 듣기와 답 고르기, 언어별 학습 기록 및 카드·마을 성장 놀이를 제공합니다. 현재 출시 준비 중이며 정식 서비스는 출시 안내에 따라 시작합니다.',
-             'The app offers Korean and English picture word cards, listening and answer selection, separate learning records by language, and card and village progression. It is being prepared for launch, with service beginning as announced at release.'],
+            ['한글·영어 그림 낱말카드, 소리 듣기와 답 고르기, 언어별 학습 기록 및 카드·마을 성장 놀이를 제공합니다.',
+             'The app offers Korean and English picture word cards, listening and answer selection, separate learning records by language, and card and village progression.'],
         ],
-        'price': ['출시 시 기본 설치와 동물 꾸러미 20장은 무료로 제공할 예정입니다. 기본 완성팩 9개 꾸러미 180장과 탐험 확장팩 10개 꾸러미 200장은 각각 한글·영어를 포함하는 별도 일회성 인앱 구매 상품으로 준비하고 있습니다. 향후 추가 상품은 포함하지 않으며, 최종 구성과 가격은 판매 전에 표시합니다.',
-                  'At launch, installation and the 20-card animal collection are planned to be free. The base completion pack (9 collections, 180 cards) and exploration expansion (10 collections, 200 cards) are being prepared as separate one-time in-app purchases, each including Korean and English. Future additional products are not included; final contents and prices will be shown before sales.'],
+        'price': ['기본 설치는 무료입니다. 동물 꾸러미 20장은 무료 콘텐츠로 안내합니다. 기본 완성팩 9개 꾸러미 180장과 탐험 확장팩 10개 꾸러미 200장은 각각 한글·영어를 포함하는 별도 일회성 인앱 구매 상품으로 준비하고 있습니다. 향후 추가 상품은 포함하지 않으며, 최종 구성과 가격은 판매 전에 표시합니다.',
+                  'Installation is free. The 20-card animal collection is listed as free content. The base completion pack (9 collections, 180 cards) and exploration expansion (10 collections, 200 cards) are being prepared as separate one-time in-app purchases, each including Korean and English. Future additional products are not included; final contents and prices will be shown before sales.'],
         'specific': [
             ['카드, 경험치, 마을과 반짝임 효과는 앱 내 놀이 요소이며 현금·실물 상품·투자 자산이 아닙니다. 현금 환전이나 이용자 간 거래 기능은 제공하지 않습니다. 카드 기울임에는 기기의 중력 센서를 사용할 수 있으며 입력은 기기에서 처리합니다. 현재 카메라·마이크 기능은 없습니다.',
              'Cards, experience, the village and shimmering effects are in-app play elements, not cash, physical goods or investment assets. There is no cash redemption or user-to-user trading. Card tilt may use the device’s gravity sensor, processed on the device. There are currently no camera or microphone features.'],

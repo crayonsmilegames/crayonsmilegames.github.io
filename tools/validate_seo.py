@@ -7,11 +7,14 @@ import re
 import xml.etree.ElementTree as ET
 from privacy_content import EFFECTIVE, SECTIONS
 import terms_content
+from build_brand_pages import PRODUCTS, launch_page_modified
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://crayonsmilegames.github.io/'
 PLAY = 'https://play.google.com/store/apps/details?id=com.crayonsmile.somikidsworld&pcampaignid=web_share'
 COLORING_PLAY = 'https://play.google.com/store/apps/details?id=com.crayonsmile.somicoloring&pcampaignid=web_share'
+
+PRODUCT_STORE_URLS = {product['slug']: product['store'] for product in PRODUCTS if not product['upcoming']}
 
 class Document(HTMLParser):
     def __init__(self, source):
@@ -45,7 +48,7 @@ for path in ROOT.rglob('*.html'):
         absolute = urljoin(url, link)
         parsed = urlsplit(absolute)
         if parsed.hostname == 'play.google.com':
-            assert absolute in {PLAY, COLORING_PLAY}, (path, absolute)
+            assert absolute in PRODUCT_STORE_URLS.values(), (path, absolute)
         if parsed.hostname != 'crayonsmilegames.github.io':
             continue
         target = ROOT / unquote(parsed.path.lstrip('/'))
@@ -80,7 +83,7 @@ for path in ROOT.rglob('*.html'):
         assert 'aggregateRating' not in app and 'review' not in app
         assert (ROOT / app['image'].removeprefix(BASE)).is_file()
         if app.get('installUrl'):
-            assert app['installUrl'] in {PLAY, COLORING_PLAY}
+            assert app['installUrl'] in PRODUCT_STORE_URLS.values()
             assert app['offers']['url'] == app['installUrl']
             assert app['offers']['price'] == '0'
     if 'BreadcrumbList' in graph:
@@ -91,7 +94,7 @@ for path in ROOT.rglob('*.html'):
     if '/terms/' in url:
         assert set(graph) == {'Organization', 'WebSite', 'WebPage', 'BreadcrumbList'}
         slug = url.split('/games/')[1].split('/')[0]
-        assert graph['WebPage']['dateModified'] == terms_content.EFFECTIVE
+        assert graph['WebPage']['dateModified'] == launch_page_modified(urlsplit(url).path, terms_content.EFFECTIVE)
         assert graph['WebPage']['version'] == terms_content.VERSION
         assert terms_content.PACKAGES[slug] in s
         assert {key for key, _, _ in terms_content.sections(slug)} <= set(ids)
@@ -104,7 +107,7 @@ for path in ROOT.rglob('*.html'):
             assert re.findall(r'<p>(.*?)</p>', section, re.S) == [pair[language] for pair in paragraphs]
     elif '/privacy/' in url:
         assert set(graph) == {'Organization', 'WebSite', 'WebPage', 'BreadcrumbList'}
-        assert graph['WebPage']['dateModified'] == EFFECTIVE
+        assert graph['WebPage']['dateModified'] == launch_page_modified(urlsplit(url).path, EFFECTIVE)
         assert len([1 for t, a in d.tags if t == 'article' and 'data-app' in a]) == 4
         assert {id_ for id_, _, _ in SECTIONS} <= set(ids)
         assert any(t == 'time' and a.get('datetime') == EFFECTIVE for t, a in d.tags)
@@ -134,11 +137,16 @@ for path in ROOT.rglob('*.html'):
         assert app['name'] in unescape(s)
         assert app.get('alternateName') and app.get('inLanguage')
         assert len([1 for t, a in d.tags if t == 'dl' and a.get('class') == 'product-facts']) == 1
-        if '/hangul-abc/' in url or '/somi-flashcards/' in url:
+        slug = url.split('/games/')[1].split('/')[0]
+        store_links = {a['href'] for t, a in d.tags if t == 'a' and urlsplit(a.get('href', '')).hostname == 'play.google.com'}
+        if slug in PRODUCT_STORE_URLS:
+            store = PRODUCT_STORE_URLS[slug]
+            assert app['installUrl'] == app['downloadUrl'] == store
+            assert store_links == {store}
+            assert 'coming-notice' not in s
+        else:
             assert not any(k in app for k in ['installUrl', 'downloadUrl', 'offers', 'releaseDate'])
-            assert not any(urlsplit(a.get('href', '')).hostname == 'play.google.com' for t, a in d.tags)
-            assert 'Coming soon' in s if '/en/' in url else '출시 예정' in s
-            assert 'coming-notice' in s
+            assert not store_links and 'coming-notice' in s
     else:
         assert set(graph) == {'Organization', 'WebSite', 'CollectionPage'}
         entries = graph['CollectionPage']['mainEntity']['itemListElement']

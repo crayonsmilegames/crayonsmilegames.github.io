@@ -22,8 +22,8 @@ APP_DATA = {
 # Each paragraph is authored as bilingual HTML. Keep the two versions aligned.
 SECTIONS = [
     ('scope', ['1. 적용 범위와 운영자', '1. Scope and operator'], [
-        ['CrayonSmile(크레용스마일)은 어린이와 가족을 위한 게임을 만드는 대한민국 개인사업자입니다. 이 방침은 아래 네 앱과 이 공식 웹사이트에 적용됩니다. 출시 예정 앱은 현재 개발 중인 기능을 기준으로 안내하며, 기능이나 처리 방식이 바뀌면 이 방침을 갱신합니다.',
-         'CrayonSmile is a Korean sole proprietorship creating games for children and families. This policy covers the four apps below and this official website. Information about upcoming apps describes their current development features; we will update this policy if those features or data practices change.'],
+        ['CrayonSmile(크레용스마일)은 어린이와 가족을 위한 게임을 만드는 대한민국 개인사업자입니다. 이 방침은 아래 네 앱과 이 공식 웹사이트에 적용됩니다. 기능이나 데이터 처리 방식이 바뀌면 이 방침을 갱신합니다.',
+         'CrayonSmile is a Korean sole proprietorship creating games for children and families. This policy covers the four apps below and this official website. We will update this policy if app features or data practices change.'],
         ['앱에는 CrayonSmile 온라인 회원가입이나 사용자 계정 서버가 없습니다. 학습을 위해 기기에서 정보를 입력·처리하는 것과 운영자가 서버로 정보를 수집하는 것은 구분됩니다. 아래 로컬 데이터는 앱이 CrayonSmile 서버로 업로드하지 않습니다.',
          'The apps have no CrayonSmile online sign-up or user account server. Information entered and processed locally for learning is distinct from information collected by an operator on a server. The apps do not upload the local data described below to a CrayonSmile server.']
     ]),
